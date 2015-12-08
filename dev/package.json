@@ -15,6 +15,7 @@
   "scripts": {},
   "dependencies": {
     "babel-eslint": "^4.1.6",
+    "ecology": "^1.0.4",
     "eslint": "^1.10.1",
     "eslint-config-defaults": "^7.0.1",
     "eslint-plugin-filenames": "^0.1.2",
