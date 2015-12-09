@@ -1,9 +1,16 @@
 History
 =======
 
+## 0.0.4
+
+*  this release
+  - removes references to removed webpack loaders (style, url etc)
+  - corrects the paths for new doc scripts
+  - adds `push-gh-pages` script
+
 ## 0.0.3
 
-* Release to correct missing scripts
+* test release
 
 ## 0.0.2
 
