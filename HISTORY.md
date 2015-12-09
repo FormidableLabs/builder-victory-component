@@ -1,6 +1,10 @@
 History
 =======
 
+## 0.0.3
+
+* Release to correct missing scripts
+
 ## 0.0.2
 
 * Release according to the [fine manual][]
