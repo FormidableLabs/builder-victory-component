@@ -20,23 +20,33 @@ $ npm install --save-dev builder-victory-component-dev
 This archetype assumes an architecture as follows:
 
 ```
-demo/
-  app.jsx
-  index.html
-src
-  components/
-    *.jsx
-  index.js
-test
-  client/
-    spec/
-      components/
-        *.jsx?
-      *.jsx?
-    main.js
-    test.html
-.builderrc
-package.json
+.
+├── .builderrc                  # Configures builder archetype
+├── package.json
+├── demo                        # Component demo
+│   ├── app.jsx
+│   └── index.html
+├── docs                        # Ecology documentation
+│   ├── README.md
+│   ├── app.jsx
+│   ├── docs.jsx
+│   ├── ecology.md
+│   ├── index.html
+│   ├── static-index.jsx
+│   └── static-render-entry.jsx
+├── dist                        # Distribution build destination (standalone)
+├── lib                         # Lib build destination (npm)
+├── src                         # Component source
+│   ├── components
+│   │   └── *.jsx?
+│   └── index.js
+└── test                        # Component tests
+    └── client
+        ├── main.js
+        ├── spec
+        │   └── components
+        │       └── *.jsx?
+        └── test.html
 ```
 
 The `name` field in `package.json` (the published `npm` package name) is
