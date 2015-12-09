@@ -1,6 +1,6 @@
 {
   "name": "builder-victory-component-dev",
-  "version": "0.1.1",
+  "version": "0.0.2",
   "description": "Builder Archetype - Victory Component (Development)",
   "repository": {
     "type": "git",
@@ -44,5 +44,6 @@
     "static-site-generator-webpack-plugin": "^2.0.0",
     "webpack-dev-server": "^1.10.0",
     "webpack-stats-plugin": "^0.1.1"
-  }
+  },
+  "devDependencies": {}
 }
