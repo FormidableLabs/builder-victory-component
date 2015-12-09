@@ -36,12 +36,6 @@ module.exports = {
         // we are playing around with `NODE_PATH` in builder. Manually
         // resolve path.
         loader: require.resolve("babel-loader")
-      }, {
-        test: /\.css$/,
-        loader: require.resolve("style-loader") + "!css"
-      }, {
-        test: /\.(png|jpg)$/,
-        loader: require.resolve("url-loader") + "?limit=8192"
       }
     ]
   },
