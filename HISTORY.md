@@ -1,6 +1,10 @@
 History
 =======
 
+## 0.0.5
+
+* Add raw-loader and react-docgen to support building Ecology docs
+
 ## 0.0.4
 
 *  this release
