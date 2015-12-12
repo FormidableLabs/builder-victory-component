@@ -39,6 +39,8 @@
     "mocha": "^2.2.5",
     "opener": "^1.4.1",
     "phantomjs": "^1.9.18",
+    "raw-loader": "^0.5.1",
+    "react-docgen": "^2.4.0",
     "react-hot-loader": "^1.2.8",
     "sinon": "^1.16.1",
     "static-site-generator-webpack-plugin": "^2.0.0",
