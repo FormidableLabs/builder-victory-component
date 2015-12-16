@@ -34,7 +34,7 @@
     "open-dev": "builder concurrent dev open-demo",
     "open-hot": "builder concurrent hot open-demo",
     "docs-dev": "webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.dev.js --content-base docs",
-    "docs-hot": "webpack-dev-server --port 3000 --config dnode_modules/builder-victory-component/config/webpack/ocs/webpack.config.hot.js --hot --content-base docs",
+    "docs-hot": "webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.hot.js --hot --content-base docs",
     "docs-build-static": "webpack --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.static.js --progress",
     "push-gh-pages": "git subtree push --prefix docs/build origin gh-pages",
     "lint-server": "eslint --color -c node_modules/builder-victory-component/config/eslint/.eslintrc-server *.js",
