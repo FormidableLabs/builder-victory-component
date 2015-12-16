@@ -1,17 +1,22 @@
 /*globals __dirname:false */
 "use strict";
 
+var path = require("path");
 var webpack = require("webpack");
+
+// Replace with `__dirname` if using in project root.
+var ROOT = process.cwd();
+var OUTPUT_DIR = path.join(ROOT, "docs", "build");
 
 module.exports = {
 
   devServer: {
-    contentBase: __dirname,
+    contentBase: ROOT,
     noInfo: false
   },
 
   output: {
-    path: __dirname,
+    path: OUTPUT_DIR,
     filename: "main.js"
   },
 
