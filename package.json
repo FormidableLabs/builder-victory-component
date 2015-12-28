@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/FormidableLabs/builder-victory-component",
   "scripts": {
-    "npm:postinstall": "node -e \"require('fs').stat('lib', function(e,s){process.exit(e || !s.isDirectory() ? 1 : 0)})\" || builder run build-lib",
+    "npm:postinstall": "cd lib || builder run build",
     "npm:preversion": "builder run check",
     "npm:version": "builder run clean && builder run build && git add -A dist",
     "npm:test": "builder run test-frontend",
