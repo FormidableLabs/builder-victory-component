@@ -1,6 +1,10 @@
 History
 =======
 
+## 0.0.7
+
+* Build both `dist` and `lib` on `postinstall`
+
 ## 0.0.6
 
 * Fix issue with `builder docs-*` output paths
