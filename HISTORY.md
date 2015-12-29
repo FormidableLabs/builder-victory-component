@@ -1,6 +1,11 @@
 History
 =======
 
+## 0.0.8
+
+* Fix issue with exported React global in UMD distribution bundle
+  - Enables use of Victory via e.g. NPMCDN
+
 ## 0.0.7
 
 * Build both `dist` and `lib` on `postinstall`
