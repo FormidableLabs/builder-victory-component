@@ -28,7 +28,7 @@ module.exports = {
   externals: [
     {
       "react": {
-        root: "Victory",
+        root: "React",
         commonjs2: "react",
         commonjs: "react",
         amd: "react"
