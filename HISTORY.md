@@ -1,6 +1,10 @@
 History
 =======
 
+## 0.0.9
+
+* Ensure webpack exits with status 1 on errors
+
 ## 0.0.8
 
 * Fix issue with exported React global in UMD distribution bundle
