@@ -1,7 +1,5 @@
 "use strict";
 
-var webpack = require("webpack");
-
 module.exports = {
 
   devServer: {
@@ -38,8 +36,5 @@ module.exports = {
         loader: require.resolve("babel-loader")
       }
     ]
-  },
-  plugins: [
-    new webpack.NoErrorsPlugin()
-  ]
+  }
 };
