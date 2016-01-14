@@ -41,7 +41,7 @@
     "phantomjs": "^1.9.18",
     "raw-loader": "^0.5.1",
     "react-docgen": "^2.4.0",
-    "react-hot-loader": "^1.2.8",
+    "react-hot-loader": "v2.0.0-alpha-4",
     "sinon": "^1.16.1",
     "static-site-generator-webpack-plugin": "^2.0.0",
     "webpack-dev-server": "^1.10.0",
