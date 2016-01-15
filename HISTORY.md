@@ -1,6 +1,12 @@
 History
 =======
 
+## 0.1.0
+
+* Upgrade to Radium 0.16.2 with server-side-rendered media queries.
+  This is a breaking change; Please refer to the [Radium upgrade guide][radium-0.16-upgrade-guide]
+* Add DEVELOPMENT, CONTRIBUTION guides for Victory
+
 ## 0.0.9
 
 * Ensure webpack exits with status 1 on errors
@@ -41,5 +47,6 @@ History
 
 * Initial release. ( [@coopy][] )
 
-[fine manual]: https://github.com/FormidableLabs/builder-victory-component/blob/master/CONTRIBUTING.md
 [@coopy]: https://github.com/coopy
+[fine manual]: https://github.com/FormidableLabs/builder-victory-component/blob/master/CONTRIBUTING.md
+[radium-0.16-upgrade-guide]: https://github.com/FormidableLabs/radium/blob/master/docs/guides/upgrade-v0.16.x.md
