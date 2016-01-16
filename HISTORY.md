@@ -1,6 +1,10 @@
 History
 =======
 
+## 0.1.2
+
+* Fix hot reload configuration
+
 ## 0.1.1
 
 * Don't `git add -A dist` in the `npm:version` task. `dist/` should not be committed, just published along with `lib/` to NPM.
