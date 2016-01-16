@@ -1,6 +1,10 @@
 History
 =======
 
+## 0.1.1
+
+* Don't `git add -A dist` in the `npm:version` task. `dist/` should not be committed, just published along with `lib/` to NPM.
+
 ## 0.1.0
 
 * Upgrade to Radium 0.16.2 with server-side-rendered media queries.
@@ -18,7 +22,7 @@ History
 
 ## 0.0.7
 
-* Build both `dist` and `lib` on `postinstall`
+* Build both `dist/` and `lib/` on `postinstall`
 
 ## 0.0.6
 
