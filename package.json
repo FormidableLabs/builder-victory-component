@@ -28,6 +28,7 @@
     "server-dev": "webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/demo/webpack.config.dev.js --colors --content-base demo",
     "server-hot": "webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/demo/webpack.config.hot.js --colors --inline --hot --content-base demo",
     "server-test": "webpack-dev-server --port 3001 --config node_modules/builder-victory-component/config/webpack/webpack.config.test.js --colors",
+    "server-docs": "http-server docs/build",
     "dev": "builder concurrent server-dev server-test",
     "hot": "builder concurrent server-hot server-test",
     "open-demo": "opener http://127.0.0.1:3000",
@@ -75,6 +76,7 @@
     "eslint": "^1.10.1",
     "eslint-config-defaults": "^7.0.1",
     "eslint-plugin-filenames": "^0.1.2",
+    "http-server": "^0.8.5",
     "radium": "0.16.x",
     "react": "0.14.x",
     "react-dom": "0.14.x"
