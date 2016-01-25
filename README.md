@@ -86,22 +86,25 @@ settings](config/babel/.babelrc).
 
 ## Tasks
 
-```
-$ builder help builder-victory-component
-[builder:help]
+Run `$ builder help` to see usage.
 
+```
 Usage:
 
-  builder [action] [task]
+  builder <action> <task(s)>
 
 Actions:
 
-  help, run, concurrent, install
+  help, run, concurrent, envs
+
+Flags: General
+
+  --builderrc: Path to builder config file (default: `.builderrc`)
 
 Tasks:
 
   npm:postinstall
-    [builder-victory-component] node -e "require('fs').stat('lib', function(e,s){process.exit(e || !s.isDirectory() ? 1 : 0)})" || builder run build-lib
+    [builder-victory-component] cd lib || builder run build
 
   npm:preversion
     [builder-victory-component] builder run check
@@ -110,7 +113,7 @@ Tasks:
     [builder-victory-component] builder run test-frontend
 
   npm:version
-    [builder-victory-component] builder run clean && builder run build && git add -A dist
+    [builder-victory-component] builder run clean && builder run build
 
   build
     [builder-victory-component] builder run build-lib && builder run build-dist
@@ -119,16 +122,16 @@ Tasks:
     [builder-victory-component] builder run clean-dist && builder run build-dist-min && builder run build-dist-dev
 
   build-dist-dev
-    [builder-victory-component] webpack --config node_modules/builder-victory-component/config/webpack/webpack.config.dev.js
+    [builder-victory-component] webpack --bail --config node_modules/builder-victory-component/config/webpack/webpack.config.dev.js --colors
 
   build-dist-min
-    [builder-victory-component] webpack --config node_modules/builder-victory-component/config/webpack/webpack.config.js
+    [builder-victory-component] webpack --bail --config node_modules/builder-victory-component/config/webpack/webpack.config.js --colors
 
   build-lib
-    [builder-victory-component] builder run clean-lib && babel src -d lib
+    [builder-victory-component] builder run clean-lib && babel src -d lib --copy-files
 
   check
-    [builder-victory-component] builder run lint && builder run test
+    [builder-victory-component] builder run lint && builder run npm:test
 
   check-ci
     [builder-victory-component] builder run lint && builder run test-ci
@@ -150,6 +153,15 @@ Tasks:
 
   dev
     [builder-victory-component] builder concurrent server-dev server-test
+
+  docs-build-static
+    [builder-victory-component] webpack --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.static.js --progress
+
+  docs-dev
+    [builder-victory-component] webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.dev.js --content-base docs
+
+  docs-hot
+    [builder-victory-component] webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.hot.js --hot --content-base docs
 
   hot
     [builder-victory-component] builder concurrent server-hot server-test
@@ -175,17 +187,20 @@ Tasks:
   open-hot
     [builder-victory-component] builder concurrent hot open-demo
 
+  push-gh-pages
+    [builder-victory-component] git subtree push --prefix docs/build origin gh-pages
+
   server-dev
-    [builder-victory-component] webpack-dev-server --port 3000 --config  node_modules/builder-victory-component/config/webpack/demo/webpack.config.dev.js --colors --content-base demo
+    [builder-victory-component] webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/demo/webpack.config.dev.js --colors --content-base demo
+
+  server-docs
+    [builder-victory-component] http-server docs/build
 
   server-hot
-    [builder-victory-component] webpack-dev-server --port 3000 --config  node_modules/builder-victory-component/config/webpack/demo/webpack.config.hot.js --colors --hot --content-base demo
+    [builder-victory-component] webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/demo/webpack.config.hot.js --colors --inline --hot --content-base demo
 
   server-test
     [builder-victory-component] webpack-dev-server --port 3001 --config node_modules/builder-victory-component/config/webpack/webpack.config.test.js --colors
-
-  test
-    [builder-victory-component] builder run npm:test
 
   test-ci
     [builder-victory-component] builder run test-frontend-ci
@@ -197,16 +212,16 @@ Tasks:
     [builder-victory-component] builder run test-frontend-dev
 
   test-frontend
-    [builder-victory-component] node node_modules/builder-victory-component/node_modules/karma/bin/karma start node_modules/builder-victory-component/config/karma/karma.conf.js
+    [builder-victory-component] karma start node_modules/builder-victory-component/config/karma/karma.conf.js
 
   test-frontend-ci
-    [builder-victory-component] node node_modules/builder-victory-component/node_modules/karma/bin/karma start --browsers PhantomJS,Firefox node_modules/builder-victory-component/config/karma/karma.conf.coverage.js
+    [builder-victory-component] karma start --browsers PhantomJS,Firefox node_modules/builder-victory-component/config/karma/karma.conf.coverage.js
 
   test-frontend-cov
-    [builder-victory-component] node node_modules/builder-victory-component/node_modules/karma/bin/karma start node_modules/builder-victory-component/config/karma/karma.conf.coverage.js
+    [builder-victory-component] karma start node_modules/builder-victory-component/config/karma/karma.conf.coverage.js
 
   test-frontend-dev
-    [builder-victory-component] node node_modules/builder-victory-component/node_modules/karma/bin/karma start node_modules/builder-victory-component/config/karma/karma.conf.dev.js
+    [builder-victory-component] karma start node_modules/builder-victory-component/config/karma/karma.conf.dev.js
 ```
 
 [builder]: https://github.com/FormidableLabs/builder
