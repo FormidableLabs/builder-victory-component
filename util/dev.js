@@ -16,8 +16,9 @@ pkg.description += " (Development)";
 pkg.dependencies = devPkg.dependencies;
 
 // Remove scripts, dev deps, etc.
-pkg.scripts = {};
-pkg.devDependencies = {};
+delete pkg.scripts;
+delete pkg.devDependencies;
+delete pkg.peerDependencies;
 
 // Write out.
 fs.writeFileSync(path.join(__dirname, "../dev/package.json"), JSON.stringify(pkg, null, 2));
