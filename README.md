@@ -79,10 +79,20 @@ An example project using this structure is:
 
 ## Usage Notes
 
+### Babel Configuration
+
 This archetype does not currently specify its own `.babelrc`. Your project
 should specify its own in the root directory if you want non-default Babel
 settings (like using stage 0, for instance). See [the recommended
 settings](config/babel/.babelrc).
+
+### peerDependencies
+
+This archetype is meant to be used in a very specific context: A Victory component. As such, it's assumed that the implementing component bring along these dependencies:
+- `react` & `react-dom 0.14+`
+- Most Victory components will also want to depend on `radium 0.16+``.
+
+The reason we don't specify these in the archetype `package.json`'s `peerDependencies` is to lower the friction to testing out `beta` builds of React by specifying a `peer` of `react 0.14.x`. Similarly, specifying a `peer` of `>=0.14.x` would imply that we're compatible with future React releases, something we can't promise.
 
 ## Tasks
 
