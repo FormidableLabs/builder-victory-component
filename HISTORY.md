@@ -1,6 +1,13 @@
 History
 =======
 
+## 0.2.1
+
+* Add `server-docs` task that starts a http-server for to test built static `docs/` site
+* Remove `test` task in archetype `scripts` section, opening up for projects to implement `npm test` tasks that don't clash with the archetype.
+* Remove `peerDependencies` and unneeded `devDependencies`. Add documentation instead.
+* Use `builder-support` for publishing dev archetype
+
 ## 0.2.0
 
 * Remove application dependencies (`lodash`, `radium`) - it's now the responsibility of each Victory component to bring dependencies.

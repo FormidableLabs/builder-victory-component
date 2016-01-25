@@ -1,6 +1,6 @@
 {
   "name": "builder-victory-component-dev",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Builder Archetype - Victory Component (Development)",
   "repository": {
     "type": "git",
@@ -12,6 +12,7 @@
     "url": "https://github.com/FormidableLabs/builder-victory-component/issues"
   },
   "homepage": "https://github.com/FormidableLabs/builder-victory-component",
+  "scripts": {},
   "dependencies": {
     "babel-eslint": "^4.1.6",
     "clean-webpack-plugin": "^0.1.5",
@@ -46,5 +47,6 @@
     "static-site-generator-webpack-plugin": "^2.0.0",
     "webpack-dev-server": "^1.10.0",
     "webpack-stats-plugin": "^0.1.1"
-  }
+  },
+  "devDependencies": {}
 }
