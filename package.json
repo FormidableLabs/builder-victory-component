@@ -65,12 +65,6 @@
     "rimraf": "^2.4.0",
     "webpack": "^1.12.9"
   },
-  "peerDependencies": {
-    "builder": "2.x",
-    "radium": "0.16.x",
-    "react": "0.14.x",
-    "react-dom": "0.14.x"
-  },
   "devDependencies": {
     "eslint": "^1.10.1",
     "eslint-config-defaults": "^7.0.1",
