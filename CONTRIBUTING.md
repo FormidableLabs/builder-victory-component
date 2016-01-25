@@ -21,13 +21,13 @@ Run `npm run builder:check`
 
 ## Documentation
 
-To generate the usage snippet in the `README.md`, run:
+To generate the usage snippet in the `README.md`, first go to a project that _uses_ the archetype and then run:
 
 ```sh
 $ builder help builder-victory-component
 ```
 
-in any project where this archetype is installed and paste in the output.
+Then paste in the output. Auto-generating the usage snippet is coming! See https://github.com/FormidableLabs/builder/issues/12.
 
 ## Release
 
@@ -41,7 +41,7 @@ For tagged official releases _only_, make sure to:
 ```sh
 $ vim HISTORY.md              # Version notes
 $ vim package.json            # Bump version
-$ npm run builder:prepublish  # Generate `dev/package.json`
+$ builder-support gen-dev     # Generate `dev/*` files
 $ npm run builder:check       # Last check!
 $ git add package.json dev HISTORY.md
 $ git commit -m "Version bump"
