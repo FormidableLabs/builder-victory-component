@@ -1,6 +1,11 @@
 History
 =======
 
+## 0.2.0
+
+* Remove application dependencies (`lodash`, `radium`) - it's now the responsibility of each Victory component to bring dependencies.
+* Add `peerDependencies` (`builder`, `radium`, `react`, `react-dom`).
+
 ## 0.1.2
 
 * Fix hot reload configuration
