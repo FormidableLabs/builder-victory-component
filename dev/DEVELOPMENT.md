@@ -175,16 +175,12 @@ the basic workflow is:
 $ git pull
 $ git status # (should be no changes)
 
-# Do a final test run
-$ builder run check
-
 # Choose a semantic update for the new version.
 # If you're unsure, read about semantic versioning at http://semver.org/
 $ npm version major|minor|patch -m "Version %s - INSERT_REASONS"
 
 # ... the `dist/` and `lib/` directories are now built, `package.json` is
 # updated, and the appropriate files are committed to git (but unpushed).
-#
 # *Note*: `lib/` is uncommitted, but built and must be present to push to npm.
 
 $ git push && git push --tags
