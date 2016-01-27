@@ -175,6 +175,9 @@ the basic workflow is:
 $ git pull
 $ git status # (should be no changes)
 
+# Do a final test run
+$ builder run check
+
 # Choose a semantic update for the new version.
 # If you're unsure, read about semantic versioning at http://semver.org/
 $ npm version major|minor|patch -m "Version %s - INSERT_REASONS"
@@ -184,8 +187,6 @@ $ npm version major|minor|patch -m "Version %s - INSERT_REASONS"
 #
 # *Note*: `lib/` is uncommitted, but built and must be present to push to npm.
 
-# Check that everything looks good in last commit and push.
-$ git diff HEAD^ HEAD
 $ git push && git push --tags
 # ... the project is now pushed to GitHub and available to `bower`.
 
