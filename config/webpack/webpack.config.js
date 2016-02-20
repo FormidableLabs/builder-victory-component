@@ -5,11 +5,7 @@ var webpack = require("webpack");
 
 // Replace with `__dirname` if using in project root.
 var ROOT = process.cwd();
-
-console.log("\n\n\n\n", "TODO HERE ",
-  "\n* ROOT", ROOT,
-  "\n* __dirname", __dirname,
-"\n\n\n\n");
+var SRC = path.join(ROOT, "src");
 
 // **Little Hacky**: Infer the filename and library name from the package name.
 //
@@ -29,8 +25,8 @@ var libName = libPath
 
 module.exports = {
   cache: true,
-  context: ROOT,
-  entry: path.join(ROOT, "src/index.js"),
+  context: SRC,
+  entry: "./index.js",
   externals: [
     {
       "react": {
@@ -54,7 +50,9 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        exclude: [/node_modules/],
+        // Use include specifically of our sources.
+        // Do _not_ use an `exclude` here.
+        include: [SRC],
         // **Note**: Cannot use shorthand `"babel-loader"` or `"babel"` when
         // we are playing around with `NODE_PATH` in builder. Manually
         // resolve path.
