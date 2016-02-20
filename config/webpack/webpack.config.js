@@ -6,6 +6,11 @@ var webpack = require("webpack");
 // Replace with `__dirname` if using in project root.
 var ROOT = process.cwd();
 
+console.log("\n\n\n\n", "TODO HERE ",
+  "\n* ROOT", ROOT,
+  "\n* __dirname", __dirname,
+"\n\n\n\n");
+
 // **Little Hacky**: Infer the filename and library name from the package name.
 //
 // Assumptions:
