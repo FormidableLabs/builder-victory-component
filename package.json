@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/FormidableLabs/builder-victory-component",
   "scripts": {
-    "npm:postinstall": "cd lib || builder run build",
+    "npm:postinstall": "cd lib || builder run build --expand-archetype",
     "npm:preversion": "builder run check",
     "npm:version": "builder run clean && builder run build",
     "npm:test": "builder run test-frontend",
