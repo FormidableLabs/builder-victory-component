@@ -29,6 +29,7 @@ var libName = libPath
 
 module.exports = {
   cache: true,
+  context: ROOT,
   entry: path.join(ROOT, "src/index.js"),
   externals: [
     {
