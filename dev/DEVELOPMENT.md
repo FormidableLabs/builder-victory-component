@@ -9,7 +9,7 @@ As a preliminary matter so you can type `builder` instead of
 `./node_modules/.bin` in `PATH` like:
 
 ```sh
-$ export PATH="${PATH}:./node_modules/.bin"
+export PATH="${PATH}:./node_modules/.bin"
 ```
 
 Due to a [postinstall bug][] affecting certain version combinations of `npm` v2 and Node (e.g. `node v4.2.2`, `npm v2.14.7`), we recommend that you use `npm` v3. You can use `npm` to upgrade `npm`:
