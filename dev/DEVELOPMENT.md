@@ -183,8 +183,8 @@ $ npm version major|minor|patch -m "Version %s - INSERT_REASONS"
 # updated, and the appropriate files are committed to git (but unpushed).
 # *Note*: `lib/` is uncommitted, but built and must be present to push to npm.
 
-$ git push && git push --tags
-# ... the project is now pushed to GitHub and available to `bower`.
+# Push the dist and version commits; and the tag:
+$ git push --follow-tags
 
 # And finally publish to `npm`!
 $ npm publish
@@ -204,4 +204,4 @@ please review:
       [`npm install` runs `npm prepublish` bug](https://github.com/npm/npm/issues/3059)
 
 [builder]: https://github.com/FormidableLabs/builder
-[postinstall bug]: https://github.com/npm/npm/issues/4134#issuecomment-154571544 
+[postinstall bug]: https://github.com/npm/npm/issues/4134#issuecomment-154571544
