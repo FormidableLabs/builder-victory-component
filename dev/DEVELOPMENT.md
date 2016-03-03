@@ -4,15 +4,13 @@ Development
 We use [builder][] and `npm` to control all aspects of development and
 publishing.
 
-As a preliminary matter, please update your shell to include
+As a preliminary matter so you can type `builder` instead of
+`./node_modules/.bin/builder` for all commands, please update your shell to include
 `./node_modules/.bin` in `PATH` like:
 
 ```sh
-$ export PATH="${PATH}:./node_modules/.bin"
+export PATH="${PATH}:./node_modules/.bin"
 ```
-
-So you can type `builder` instead of `./node_modules/.bin/builder` for all
-commands.
 
 Due to a [postinstall bug][] affecting certain version combinations of `npm` v2 and Node (e.g. `node v4.2.2`, `npm v2.14.7`), we recommend that you use `npm` v3. You can use `npm` to upgrade `npm`:
 
