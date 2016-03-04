@@ -1,6 +1,11 @@
 History
 =======
 
+## 0.2.2
+
+* Move build dependencies to dev package
+* Update documentation
+
 ## 0.2.1
 
 * Add `server-docs` task that starts a http-server for to test built static `docs/` site
