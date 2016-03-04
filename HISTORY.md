@@ -1,6 +1,11 @@
 History
 =======
 
+## 0.2.3
+
+* Revert move build dependencies to dev package
+  - CI jobs still depend on build deps existing in production mode.
+
 ## 0.2.2
 
 * Move build dependencies to dev package
