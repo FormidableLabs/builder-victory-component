@@ -1,8 +1,3 @@
 {
-  "presets": ["es2015", "stage-1", "react"],
-  "env": {
-    "webpack": {
-      "presets": ["es2015-webpack", "stage-1", "react"]
-    }
-  }
+  "presets": ["es2015", "stage-1", "react"]
 }

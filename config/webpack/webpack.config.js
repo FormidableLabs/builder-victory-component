@@ -1,8 +1,5 @@
 "use strict";
 
-// The webpack env in .babelrc supports tree-shaking
-process.env.BABEL_ENV = "webpack";
-
 var path = require("path");
 var webpack = require("webpack");
 
