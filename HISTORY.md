@@ -1,6 +1,9 @@
 History
 =======
 
+## 1.0.0
+* Upgrade to Babel 6
+
 ## 0.2.3
 
 * Revert move build dependencies to dev package
