@@ -20,8 +20,8 @@
     "clean-dist": "rimraf dist",
     "clean-lib": "rimraf lib",
     "clean": "builder run clean-lib && builder run clean-dist",
-    "build-dist-min": "BABEL_ENV=webpack webpack --bail --config node_modules/builder-victory-component/config/webpack/webpack.config.js --color",
-    "build-dist-dev": "BABEL_ENV=webpack webpack --bail --config node_modules/builder-victory-component/config/webpack/webpack.config.dev.js --color",
+    "build-dist-min": " webpack --bail --config node_modules/builder-victory-component/config/webpack/webpack.config.js --color",
+    "build-dist-dev": " webpack --bail --config node_modules/builder-victory-component/config/webpack/webpack.config.dev.js --color",
     "build-dist": "builder run clean-dist && builder run build-dist-min && builder run build-dist-dev",
     "build-lib": "builder run clean-lib && babel src -d lib --copy-files",
     "build": "builder run build-lib && builder run build-dist",
@@ -36,7 +36,7 @@
     "open-hot": "builder concurrent hot open-demo",
     "docs-dev": "webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.dev.js --content-base docs",
     "docs-hot": "webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.hot.js --hot --content-base docs",
-    "docs-build-static": "BABEL_ENV=webpack webpack --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.static.js --progress",
+    "docs-build-static": " webpack --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.static.js --progress",
     "push-gh-pages": "git subtree push --prefix docs/build origin gh-pages",
     "lint-server": "eslint --color -c node_modules/builder-victory-component/config/eslint/.eslintrc-server *.js",
     "lint-client": "eslint --color --ext .js,.jsx -c node_modules/builder-victory-component/config/eslint/.eslintrc-client src demo/*.jsx",
@@ -69,7 +69,7 @@
     "webpack": "^2.1.0-beta.4"
   },
   "devDependencies": {
-    "builder-support": "~0.3.0",
+    "builder-support": "^0.3.0",
     "eslint": "^1.10.1",
     "eslint-config-defaults": "^7.0.1",
     "eslint-plugin-filenames": "^0.1.2"
