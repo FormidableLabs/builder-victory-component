@@ -1,6 +1,9 @@
 History
 =======
 
+## 1.0.1
+* Bug fix: Transpile `test/`
+
 ## 1.0.0
 * Upgrade to Babel 6
 
