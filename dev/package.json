@@ -23,7 +23,7 @@
     "eslint-plugin-react": "^3.6.2",
     "formidable-landers": "0.0.2",
     "http-server": "^0.8.5",
-    "isparta-loader": "^1.0.0",
+    "isparta-loader": "^2.0.0",
     "karma": "^0.13.9",
     "karma-chrome-launcher": "^0.2.0",
     "karma-coverage": "^0.5.2",
