@@ -1,6 +1,9 @@
 History
 =======
 
+## 1.0.2
+* Bug fix: Update babel loader for docs
+
 ## 1.0.1
 * Bug fix: Transpile `test/`
 
