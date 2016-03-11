@@ -1,6 +1,9 @@
 History
 =======
 
+## 1.0.3
+* Bug fix: Update isparta-loader dependency to work with Babel 6
+
 ## 1.0.2
 * Bug fix: Update babel loader for docs
 
