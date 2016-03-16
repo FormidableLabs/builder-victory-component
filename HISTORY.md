@@ -1,6 +1,9 @@
 History
 =======
 
+## 1.0.5
+* add babel dev deps
+
 ## 1.0.4
 * use lodash 4
 
