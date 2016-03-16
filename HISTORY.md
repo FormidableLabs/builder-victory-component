@@ -1,5 +1,7 @@
 History
 =======
+## 1.0.6
+* update babel-eslint
 
 ## 1.0.5
 * add babel dev deps
