@@ -1,6 +1,9 @@
 History
 =======
 
+## 1.0.4
+* use lodash 4
+
 ## 1.0.3
 * Bug fix: Update isparta-loader dependency to work with Babel 6
 
