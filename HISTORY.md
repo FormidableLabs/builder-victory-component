@@ -1,5 +1,8 @@
 History
 =======
+## 1.0.7
+* update formidable-landers, revert to lodash 3
+
 ## 1.0.6
 * update babel-eslint
 
