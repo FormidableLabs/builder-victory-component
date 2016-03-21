@@ -22,6 +22,7 @@ This archetype assumes an architecture as follows:
 ```
 .
 ├── .builderrc                  # Configures builder archetype
+├── .eslintrc                   # Configures eslint
 ├── package.json
 ├── demo                        # Component demo
 │   ├── app.jsx
@@ -41,6 +42,7 @@ This archetype assumes an architecture as follows:
 │   │   └── *.jsx?
 │   └── index.js
 └── test                        # Component tests
+    └── .eslintrc               # Configures eslint for tests
     └── client
         ├── main.js
         ├── spec
@@ -78,6 +80,26 @@ An example project using this structure is:
 [formidable-react-component-boilerplate][]
 
 ## Usage Notes
+
+### Eslint
+
+The implementing project will need to add an `.eslintrc` file in the root
+which should extend the archetype eslint configuration. Another `.eslintrc` file
+should be placed in the `test/` directory, extending the test eslint configuration.
+The presence of these files ensures support for most editor and IDE lint plugins.
+
+These files will be added automatically when generating a new Victory component
+using `builder-init builder-victory-component`:
+
+```yaml
+--- # <ROOT>/.eslintrc
+  extends: ./node_modules/builder-victory-component/config/eslint/.eslintrc-source
+```
+
+```yaml
+--- # <ROOT>/test/.eslintrc
+  extends: ../node_modules/builder-victory-component/config/eslint/.eslintrc-test
+```
 
 ### Babel Configuration
 

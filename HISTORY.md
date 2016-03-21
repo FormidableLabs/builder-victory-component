@@ -1,5 +1,10 @@
 History
 =======
+## 2.0.0
+* Require ROOT projects to include `.eslintrc` files that extend the archetype. This
+  ensures support for lint plugins in editors.
+* Simplify and clean up lint tasks in archetype.
+
 ## 1.0.7
 * update formidable-landers, revert to lodash 3
 
