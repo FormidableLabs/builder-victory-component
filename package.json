@@ -38,10 +38,10 @@
     "docs-hot": "webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.hot.js --hot --content-base docs",
     "docs-build-static": "webpack --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.static.js --progress",
     "push-gh-pages": "git subtree push --prefix docs/build origin gh-pages",
-    "lint-server": "eslint --color -c node_modules/builder-victory-component/config/eslint/.eslintrc-server *.js",
-    "lint-client": "eslint --color --ext .js,.jsx -c node_modules/builder-victory-component/config/eslint/.eslintrc-client src demo/*.jsx",
-    "lint-client-test": "eslint --color --ext .js,.jsx -c node_modules/builder-victory-component/config/eslint/.eslintrc-client-test src test/client",
-    "lint": "builder concurrent lint-server lint-client lint-client-test",
+    "lint-source": "eslint --color --ext .js,.jsx src",
+    "lint-demo": "eslint --color --ext .js,.jsx demo",
+    "lint-test": "eslint --color --ext .js,.jsx test",
+    "lint": "builder concurrent lint-source lint-demo lint-test",
     "test-frontend": "karma start node_modules/builder-victory-component/config/karma/karma.conf.js",
     "test-frontend-ci": "karma start --browsers PhantomJS,Firefox node_modules/builder-victory-component/config/karma/karma.conf.coverage.js",
     "test-frontend-cov": "karma start node_modules/builder-victory-component/config/karma/karma.conf.coverage.js",
@@ -53,8 +53,8 @@
     "check-ci": "builder run lint && builder run test-ci",
     "check-cov": "builder run lint && builder run test-cov",
     "check-dev": "builder run lint && builder run test-dev",
-    "builder:lint-server": "eslint --color -c config/eslint/.eslintrc-server config/karma config/webpack",
-    "builder:lint": "npm run builder:lint-server",
+    "builder:lint-config": "eslint --color config",
+    "builder:lint": "npm run builder:lint-config",
     "builder:check": "npm run builder:lint"
   },
   "dependencies": {
@@ -65,7 +65,10 @@
     "babel-preset-es2015-webpack": "^6.4.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-1": "^6.5.0",
+    "file-loader": "^0.8.5",
     "rimraf": "^2.4.0",
+    "style-loader": "^0.8.0",
+    "url-loader": "^0.5.5",
     "webpack": "^1.12.9"
   },
   "devDependencies": {
