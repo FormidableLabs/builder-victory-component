@@ -34,7 +34,7 @@
     "open-dev": "builder concurrent dev open-demo",
     "open-hot": "builder concurrent hot open-demo",
     "docs-dev": "webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.dev.js --content-base docs",
-    "docs-hot": "webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.hot.js --hot --content-base docs",
+    "docs-hot": "webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.hot.js --inline --hot --content-base docs",
     "lint-source": "eslint --color --ext .js,.jsx src",
     "lint-demo": "eslint --color --ext .js,.jsx demo",
     "lint-test": "eslint --color --ext .js,.jsx test",

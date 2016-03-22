@@ -2,7 +2,6 @@
 "use strict";
 
 var path = require("path");
-var webpack = require("webpack");
 
 // Replace with `__dirname` if using in project root.
 var ROOT = process.cwd();
@@ -10,9 +9,8 @@ var OUTPUT_DIR = path.join(ROOT, "docs", "build");
 
 module.exports = {
 
-  devServer: {
-    contentBase: ROOT,
-    noInfo: false
+  entry: {
+    app: ["./docs/entry.jsx"]
   },
 
   output: {
@@ -20,28 +18,31 @@ module.exports = {
     filename: "main.js"
   },
 
-  cache: true,
-  devtool: "source-map",
-  entry: {
-    app: ["./docs/app.jsx"]
+  devServer: {
+    contentBase: ROOT,
+    noInfo: false
   },
+
+  cache: true,
+
+  devtool: "source-map",
+
   stats: {
     colors: true,
     reasons: true
   },
+
   resolve: {
     extensions: ["", ".js", ".jsx"]
   },
+
   module: {
     loaders: [
       {
         test: /\.jsx?$/,
         exclude: [/node_modules/],
-        loader: require.resolve("babel-loader")
+        loaders: [require.resolve("babel-loader")]
       }
     ]
-  },
-  plugins: [
-    new webpack.NoErrorsPlugin()
-  ]
+  }
 };
