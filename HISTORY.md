@@ -1,5 +1,9 @@
 History
 =======
+## 2.0.1
+* Fix `docs-hot` and `docs-dev` builder tasks.
+* Remove docs site static generation tasks from archetype.
+
 ## 2.0.0
 * Require ROOT projects to include `.eslintrc` files that extend the archetype. This
   ensures support for lint plugins in editors.
