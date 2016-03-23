@@ -1,2 +1,2 @@
 --- # Internal eslint configuration for archetype JavaScript files
-  extends: defaults/configurations/walmart/es5-node
+  extends: "./eslint/.eslintrc-config"
