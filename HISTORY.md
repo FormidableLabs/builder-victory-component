@@ -1,5 +1,9 @@
 History
 =======
+## 2.1.0
+* Add eslint configuration for docs/ directory.
+* Add eslint configuration for config files (e.g. webpack.config.js).
+
 ## 2.0.1
 * Fix `docs-hot` and `docs-dev` builder tasks.
 * Remove docs site static generation tasks from archetype.
