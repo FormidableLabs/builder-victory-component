@@ -28,7 +28,7 @@
     "eslint-config-defaults": "^7.0.1",
     "eslint-plugin-filenames": "^0.1.2",
     "eslint-plugin-react": "^3.6.2",
-    "formidable-landers": "0.1.0",
+    "formidable-landers": "^0.1.1",
     "http-server": "^0.8.5",
     "isparta-loader": "^2.0.0",
     "karma": "^0.13.9",
