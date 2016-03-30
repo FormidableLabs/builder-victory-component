@@ -1,7 +1,13 @@
 History
 =======
+## 2.1.1
+* Fix semver
+
 ## 2.0.2
 * Update formidable-landers
+
+## 2.1.0
+* exists
 
 ## 2.0.1
 * Fix `docs-hot` and `docs-dev` builder tasks.
