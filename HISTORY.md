@@ -1,5 +1,8 @@
 History
 =======
+## 2.0.2
+* Update formidable-landers
+
 ## 2.0.1
 * Fix `docs-hot` and `docs-dev` builder tasks.
 * Remove docs site static generation tasks from archetype.
