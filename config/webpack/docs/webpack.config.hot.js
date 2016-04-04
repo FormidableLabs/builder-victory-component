@@ -1,17 +1,28 @@
 "use strict";
 
-var _ = require("lodash");
+var archDevRequire = require("builder-victory-component-dev/require");
+var _ = archDevRequire("lodash");
 var base = require("./webpack.config.dev");
 
-// Update our own module version.
-var baseModule = _.cloneDeep(base.module);
-// First loader needs react hot.
-baseModule.loaders[0].loaders = ["react-hot"].concat(baseModule.loaders[0].loaders);
+// Clone our own module object.
+var mod = _.cloneDeep(base.module);
+var firstLoader = mod.loaders[0];
+
+// Update loaders array. First loader needs react-hot-loader.
+firstLoader.loaders = [archDevRequire.resolve("react-hot-loader")]
+  .concat(firstLoader.loader ? [firstLoader.loader] : [])
+  .concat(firstLoader.loaders || []);
+
+// Remove single loader if any.
+firstLoader.loader = null;
 
 module.exports = _.merge({}, _.omit(base, "entry", "module"), {
   entry: {
-    app: ["webpack/hot/only-dev-server", "./docs/entry.jsx"]
+    app: [
+      archDevRequire.resolve("webpack/hot/only-dev-server"),
+      "./docs/entry.jsx"
+    ]
   },
 
-  module: baseModule
+  module: mod
 });

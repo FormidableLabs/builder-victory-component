@@ -1,4 +1,7 @@
 "use strict";
+
+var archDevRequire = require("builder-victory-component-dev/require");
+
 /*
  * Karma Configuration: "dev" version.
  *
@@ -15,7 +18,7 @@ module.exports = function (config) {
     basePath: ".", // repository root.
     files: [
       // Sinon has issues with webpack. Do global include.
-      require.resolve("sinon/pkg/sinon"),
+      archDevRequire.resolve("sinon/pkg/sinon"),
 
       // Test bundle (must be created via `npm run dev|hot|server-test`)
       "http://127.0.0.1:3001/assets/main.js"
