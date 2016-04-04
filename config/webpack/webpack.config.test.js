@@ -5,9 +5,11 @@
 var path = require("path");
 var prodCfg = require("./webpack.config");
 
+var archDevRequire = require("builder-victory-component-dev/require");
+var _ = archDevRequire("lodash");
+
 // Replace with `__dirname` if using in project root.
 var ROOT = process.cwd();
-var _ = require("lodash"); // devDependency
 
 module.exports = {
   cache: true,
