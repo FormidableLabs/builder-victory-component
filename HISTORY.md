@@ -1,5 +1,8 @@
 History
 =======
+## 2.1.2
+* fix webpack config for cheerio / chai-enzyme support
+
 ## 2.1.1
 * Fix semver
 
