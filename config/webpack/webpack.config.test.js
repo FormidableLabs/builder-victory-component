@@ -47,7 +47,7 @@ module.exports = {
     loaders: (prodCfg.module.loaders || []).concat([
       {
         test: /\.json$/,
-        loader: "json"
+        loader: archDevRequire.resolve("json-loader")
       }
     ])
   }),
