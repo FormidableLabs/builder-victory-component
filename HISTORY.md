@@ -1,5 +1,8 @@
 History
 =======
+## 2.1.3
+* remove extension from app entry point paths in demo and docs webpack configs
+
 ## 2.1.2
 * fix webpack config for cheerio / chai-enzyme support
 
