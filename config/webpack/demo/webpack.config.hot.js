@@ -20,7 +20,7 @@ module.exports = _.merge({}, _.omit(base, "entry", "module"), {
   entry: {
     app: [
       archDevRequire.resolve("webpack/hot/only-dev-server"),
-      "./demo/app.jsx"
+      "./demo/app"
     ]
   },
 
