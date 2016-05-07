@@ -10,7 +10,7 @@ var OUTPUT_DIR = path.join(ROOT, "docs", "build");
 module.exports = {
 
   entry: {
-    app: ["./docs/entry.jsx"]
+    app: ["./docs/entry"]
   },
 
   output: {
