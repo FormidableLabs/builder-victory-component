@@ -9,7 +9,6 @@ var LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 config.output.filename = config.output.filename.replace(/\.min\.js$/, ".js");
 config.plugins = [
   new LodashModuleReplacementPlugin(),
-  new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.SourceMapDevToolPlugin("[file].map")
 ];
 
