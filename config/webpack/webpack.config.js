@@ -2,6 +2,7 @@
 
 var path = require("path");
 var webpack = require("webpack");
+var LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
 // Replace with `__dirname` if using in project root.
 var ROOT = process.cwd();
@@ -62,6 +63,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new LodashModuleReplacementPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
