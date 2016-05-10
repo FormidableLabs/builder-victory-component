@@ -2,14 +2,14 @@
 
 var webpack = require("webpack");
 var config = require("./webpack.config");
-var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+var LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
 // **WARNING**: Mutates base configuration.
 // We do this because lodash isn't available in `production` mode.
 config.output.filename = config.output.filename.replace(/\.min\.js$/, ".js");
 config.plugins = [
-  new LodashModuleReplacementPlugin,
-  new webpack.optimize.OccurenceOrderPlugin,
+  new LodashModuleReplacementPlugin(),
+  new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.SourceMapDevToolPlugin("[file].map")
 ];
 
