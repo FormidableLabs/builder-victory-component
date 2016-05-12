@@ -1,5 +1,8 @@
 History
 =======
+## 2.1.4
+Adds babel and webpack plugins for lodash. 
+
 ## 2.1.3
 * remove extension from app entry point paths in demo and docs webpack configs
 
