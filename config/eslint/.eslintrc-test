@@ -6,6 +6,9 @@ extends:
 env:
   mocha: true
 
+plugins:
+  - mocha
+
 globals:
   expect: false
 
