@@ -9,6 +9,9 @@ env:
 plugins:
   - mocha
 
+rule:
+ - "mocha/no-exclusive-tests:2"
+
 globals:
   expect: false
 
