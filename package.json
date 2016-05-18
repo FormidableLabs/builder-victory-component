@@ -38,7 +38,7 @@
     "lint-source": "eslint --color --ext .js,.jsx src",
     "lint-demo": "eslint --color --ext .js,.jsx demo",
     "lint-docs": "eslint --color --ext .js,.jsx docs",
-    "lint-test": "eslint --color --ext .js,.jsx test",
+    "lint-test": "eslint --color --ext .js,.jsx --rule 'mocha/no-exclusive-tests:2' test",
     "lint": "builder concurrent lint-source lint-demo lint-docs lint-test",
     "test-frontend": "karma start node_modules/builder-victory-component/config/karma/karma.conf.js",
     "test-frontend-ci": "karma start --browsers PhantomJS,Firefox node_modules/builder-victory-component/config/karma/karma.conf.coverage.js",
