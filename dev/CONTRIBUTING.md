@@ -13,7 +13,7 @@ If you find a bug :bug: the first thing you should do is search for an existing 
 
 If you can't find an existing issue, [create a new issue](https://github.com/FormidableLabs/victory/issues/new?labels=bug). **Please add a JSBin or Fiddle demonstrating the issue**. This is the _number one_ most important thing you can do to help us fix the bug!
 
-* [clone this bin](http://jsbin.com/vikiha/edit)
+* [clone this bin](http://jsbin.com/qekike/edit)
 * ...[or fork this fiddle](https://jsfiddle.net/5g20p8vd/).
 
 ### 2. Fix bugs
