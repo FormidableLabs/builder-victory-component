@@ -34,6 +34,7 @@ module.exports = {
   // Please note that externals may have to change for versions of React
   // other than 0.14.x
   externals: {
+    "react/addons": true,
     "react/lib/ExecutionEnvironment": true,
     "react/lib/ReactContext": true,
     "text-encoding": "window"
