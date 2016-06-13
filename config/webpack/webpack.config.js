@@ -63,7 +63,12 @@ module.exports = {
     ]
   },
   plugins: [
-    new LodashModuleReplacementPlugin(),
+    new LodashModuleReplacementPlugin({
+      "currying": true,
+      "flattening": true,
+      "paths": true,
+      "placeholders": true
+    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
