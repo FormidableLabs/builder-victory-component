@@ -1,5 +1,8 @@
 History
 =======
+## 2.1.6
+* Enables feature sets for lodash webpack plugin
+
 ## 2.1.5
 * Alters webpack config to support enzyme + react 15
 
