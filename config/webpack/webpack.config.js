@@ -65,9 +65,9 @@ module.exports = {
   plugins: [
     new LodashModuleReplacementPlugin({
       "currying": true,
-      "flattening": true,
       "paths": true,
-      "placeholders": true
+      "placeholders": true,
+      "shorthands": true
     }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({

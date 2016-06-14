@@ -10,9 +10,9 @@ config.output.filename = config.output.filename.replace(/\.min\.js$/, ".js");
 config.plugins = [
   new LodashModuleReplacementPlugin({
     "currying": true,
-    "flattening": true,
     "paths": true,
-    "placeholders": true
+    "placeholders": true,
+    "shorthands": true
   }),
   new webpack.SourceMapDevToolPlugin("[file].map")
 ];
