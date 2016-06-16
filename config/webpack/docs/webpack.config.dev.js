@@ -33,7 +33,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ["", ".js", ".jsx"]
+    extensions: ["", ".js", ".jsx", ".json"]
   },
 
   module: {
@@ -42,6 +42,10 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: [/node_modules/],
         loaders: [require.resolve("babel-loader")]
+      },
+      {
+        test: /\.json$/,
+        loaders: [require.resolve("json-loader")]
       }
     ]
   }
