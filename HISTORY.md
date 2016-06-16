@@ -1,5 +1,8 @@
 History
 =======
+## 2.1.8
+* Use webpack json loader 
+
 ## 2.1.7
 * Upgrade `formidable-landers` to use the latest Radium
 * Upgrade `ecology` that depends on React 15
