@@ -41,11 +41,11 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: [/node_modules/],
-        loaders: [require.resolve("babel-loader")]
+        loaders: [require("builder-victory-component-dev/require").resolve("babel-loader")]
       },
       {
         test: /\.json$/,
-        loaders: [require.resolve("json-loader")]
+        loaders: [require("builder-victory-component-dev/require").resolve("json-loader")]
       }
     ]
   }
