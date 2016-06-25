@@ -1,4 +1,4 @@
 {
-  "presets": ["es2015", "stage-1", "react"],
+  "presets": ["react", "react-native-stage-0"],
   "plugins": ["lodash"]
 }
