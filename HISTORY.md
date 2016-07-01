@@ -1,5 +1,8 @@
 History
 =======
+## 2.2.0
+* updates babelrc to support victory native
+
 ## 2.1.8
 * Use webpack json loader 
 
