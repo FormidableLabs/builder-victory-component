@@ -1,5 +1,8 @@
 History
 =======
+## 2.3.0
+* use babel-preset-react-native (non stage 0) 
+
 ## 2.2.0
 * updates babelrc to support victory native
 
