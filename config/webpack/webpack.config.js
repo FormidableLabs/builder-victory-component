@@ -65,6 +65,7 @@ module.exports = {
   plugins: [
     new LodashModuleReplacementPlugin({
       "currying": true,
+      "flattening": true,
       "paths": true,
       "placeholders": true,
       "shorthands": true
