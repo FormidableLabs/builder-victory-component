@@ -1,5 +1,8 @@
 History
 =======
+## 2.4.0
+* use `"flattening": true` config for `lodash-webpack-plugin`
+
 ## 2.3.0
 * use babel-preset-react-native (non stage 0) 
 
