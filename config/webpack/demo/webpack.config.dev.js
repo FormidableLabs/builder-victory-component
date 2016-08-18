@@ -1,4 +1,5 @@
 "use strict";
+var LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
 module.exports = {
 
@@ -36,5 +37,14 @@ module.exports = {
         loader: require.resolve("babel-loader")
       }
     ]
-  }
+  },
+  plugins: [
+    new LodashModuleReplacementPlugin({
+      "shorthands": true,
+      "currying": true,
+      "flattening": true,
+      "paths": true,
+      "placeholders": true
+    })
+  ]
 };
