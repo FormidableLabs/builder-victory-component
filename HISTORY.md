@@ -1,5 +1,8 @@
 History
 =======
+## 2.4.1
+* remove unused babel presets 
+
 ## 2.4.0
 * use `"flattening": true` config for `lodash-webpack-plugin`
 
