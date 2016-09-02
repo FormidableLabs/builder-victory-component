@@ -3,9 +3,9 @@ Contributing
 
 Thanks for helping out! We couldn't build Victory without the support of our awesome community. Here's a guide for getting you started. If you have any questions, don't hesitate to [reach out on Gitter](https://gitter.im/FormidableLabs/victory).
 
-## How to Contribute to Victory
+# How to Contribute to Victory
 
-### 1. Create Issues
+## 1. Create Issues
 
 We love issues!
 
@@ -16,30 +16,24 @@ If you can't find an existing issue, [create a new issue](https://github.com/For
 * [clone this bin](http://jsbin.com/qekike/edit)
 * ...[or fork this fiddle](https://jsfiddle.net/5g20p8vd/6/).
 
-### 2. Fix bugs
+## 2. Fix bugs
 
 Feel like writing some code? The best way to get familiar with the code base is to fix a bug!
 
 `Option a)` You can browse bugs repo by repo:
 
 * [victory](https://github.com/FormidableLabs/victory/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
-* [victory-animation](https://github.com/FormidableLabs/victory-animation/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
-* [victory-axis](https://github.com/FormidableLabs/victory-axis/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
-* [victory-bar](https://github.com/FormidableLabs/victory-bar/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
 * [victory-chart](https://github.com/FormidableLabs/victory-chart/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
-* [victory-label](https://github.com/FormidableLabs/victory-label/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
-* [victory-line](https://github.com/FormidableLabs/victory-line/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
+* [victory-core](https://github.com/FormidableLabs/victory-core/issues?q=is%3Aopen+is%3Aissue+core%3Abug)
 * [victory-pie](https://github.com/FormidableLabs/victory-pie/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
-* [victory-scatter](https://github.com/FormidableLabs/victory-scatter/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
-* [victory-util](https://github.com/FormidableLabs/victory-util/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
 
-`Option b):` ...or you can [add ZenHub to GitHub](https://www.zenhub.io/) (Firefox and Chrome only), and take a look at [the board](https://github.com/FormidableLabs/victory#boards?repos=38721888,38460192,39965719,40037231,39981240,40025701,39974376,40269956,45209191,45209229,45499928,39859425,42207274) of prioritized issues. You can [filter by the "bug" label](https://github.com/FormidableLabs/victory/issues#boards?repos=38721888,38460192,39965719,40037231,39981240,40025701,39974376,40269956,45209191,45209229,45499928,39859425,42207274&labels=bug) to see only bugs.
+`Option b):` ...or you can [check out our HuBoard](https://huboard.com/FormidableLabs/victory#/) to see issues across all repos.
 
 Fork the repo from the repository front page of the component you want to work on.
 
-When you've fixed the bug, it's time to write some tests to ensure important corner cases are covered, and that the bug doesn't get introduced again. See [victory-line.spec.jsx](https://github.com/FormidableLabs/victory-line/blob/master/test/client/spec/components/victory-line.spec.jsx) for an example test suite.
+When you've fixed the bug, it's time to write some tests to ensure important corner cases are covered, and that the bug doesn't get introduced again. See [victory-pie.spec.jsx](https://github.com/FormidableLabs/victory-pie/blob/master/test/client/spec/components/victory-pie.spec.js) for an example test suite.
 
-### 3. Create a PR
+## 3. Create a PR
 
 Submit a PR by clicking "New pull request" from your fork's main repo page. Before submitting a PR, please read the [Developer's Guide](https://github.com/FormidableLabs/victory/blob/master/CONTRIBUTING.md#developers-guide) below. It will help you stay consistent with the code style and get your PRs merged sooner!
 
@@ -65,7 +59,7 @@ $ git commit
 
 Make sure to mention the issue **`#number`** in the commit message!
 
-## Developer's Guide
+# Developer's Guide
 
 This is an overview. For a more in-depth guide, see [`DEVELOPMENT.md`](https://github.com/FormidableLabs/victory/blob/master/DEVELOPMENT.md#development).
 
@@ -85,11 +79,11 @@ export PATH="${PATH}:./node_modules/.bin"
 
 to your permanent shell configuration.
 
-### Dev Server
+## Dev Server
 
 Run `builder run dev` to run a webpack dev server with component examples. The dev server runs on `localhost:3000`.
 
-### Checks, Tests
+## Checks, Tests
 
 Each bug fix and feature should come with tests. New features should aim for 100% code coverage.
 
@@ -100,87 +94,60 @@ Run `builder run check` before committing to ensure lint and tests are passing.
 
 We'd like to [start using Enzyme](https://github.com/FormidableLabs/victory/issues/162) for tests. If you feel up for it, please help by converting some existing tests to Enzyme.
 
-### Code Style
+## Code Style
 
 We follow a consistent code style, but we don't have a style manual yet. The easiest way to get a feel for the style is to look at source code.
 
 The JavaScript code style is enforced with `eslint` following the [`defaults/configurations/walmart/es6-react`](https://github.com/walmartlabs/eslint-config-defaults#full-configurations) configuration from [`eslint-config-defaults`](https://github.com/walmartlabs/eslint-config-defaults).
 
-### Component Style
+## Victory Component Style Guide
 
-Victory is an ecosystem of components with similar language and methodologies. It should only require one learning curve, and avoid as much component specific domain knowledge as possible. Victory should expose an intuitive api, with sensible defaults that allow a user to render simple visualizations with little start up cost. Though Victory currently relies on d3, Victory components should not be simply React wrappers around d3.
+Victory is an ecosystem of modular components with similar language and methodologies. Because these components are designed to work together, a consistent set of patterns and conventions is necessary. Please read the following set of standards and examples if you are interested in writing a larger feature, or contributing a new victory component.
 
-Victory components should:
+### Flexibility
 
-- Be created from the [FormidableLabs component generator](https://github.com/FormidableLabs/generator-formidable-react-component)
-- Be very well documented with [ecology](https://github.com/FormidableLabs/ecology)
-- Be named consistently _i.e._ `victory-bar`
-- Be React 0.14 compatible
-- *NOT* let 3rd party libraries like d3 interact with the DOM
-- Have sensible default props / fallback behaviors so that _something_ is rendered even when no props are provided
-- Produce sensible results if _only_ data is provided _i.e_ set the domain based on whatever data was provided
-- Have attractive default styling
-- Take a `style` prop, and intelligently merge provided (and scoped) styles with default styles
+Victory is designed to be as flexible as possible. Code should be free of hard-coded values or one-off solutions. The following patterns also help keep the library flexible: 
 
-```js
-// default styles
-const styles = {
-  parent: {
-    width: 500,
-    height: 300,
-    margin: 50
-  },
-  data: {
-    fill: "#756f6a",
-    opacity: 1,
-    stroke: "transparent",
-    strokeWidth: 0
-  },
-  labels: {
-    stroke: "none",
-    fill: "black",
-    fontFamily: "Helvetica",
-    fontSize: 10,
-    textAnchor: "middle"
-  }
-};
+**Seperating Rendered Components**
 
-// merging styles:
-getStyles(props) {
-  if (!props.style) {
-    return styles;
-  }
-  const {data, labels, parent} = props.style;
-  return {
-    parent: _.merge({}, styles.parent, parent),
-    labels: _.merge({}, styles.labels, labels),
-    data: _.merge({}, styles.data, data)
-  };
-}
+Any rendered component (_i.e._ `<line/>`, `<text/>` and even `<g/>`) should be written as seperate components, and included via `defaultProps` so that they can be overridden the users. This pattern also allows us to use the same code base to support a react native version of Victory. 
 
-// example style prop
+These primitive rendered elements are kept in the `victory-core` repo. Please check [here](https://github.com/FormidableLabs/victory-core/tree/master/src/victory-primitives) first before writing a new rendered component. Rendered components should be stateless and as general as possible. [`Point`](https://github.com/FormidableLabs/victory-core/blob/master/src/victory-primitives/point.js) is a good example of a rendered component. Notice that `Point` is written so that it can easily be extended to a [react native compatible version](https://github.com/FormidableLabs/victory-core-native/blob/master/lib/components/victory-primitives/point.js). The appropriate versions of `Point` can then be included as `defaultProps` in [`VictoryScatter`](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L353), and the [native version](https://github.com/FormidableLabs/victory-chart-native/blob/master/lib/components/victory-scatter.js)
+
+**Support Data Accessor Props**
+
+Rather than requiring a rigid data structure, Victory components should provide accessor props for formatting whatever data the user provides into a format the component is expecting. Use this [`createAccessor` function](https://github.com/FormidableLabs/victory-core/blob/master/src/victory-util/helpers.js#L117) to build an accessor from props and use it to format data. 
+
+**Support themes**
+
+`defaultProps` should not contain any layout related props because these values may be provided by themes. Necessary layout props should be provided via [`fallbackProps`](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L11) instead, and merged with props and themes as needed.
+
+### Sensible Defaults
+
+All Victory components should render _something_ even if no props are provided. This can be accomplished with default data and other `defaultProps`. Victory components should also have sensible behavior even when the minimum of props are provided. For example, if only `data` is provided, a component like `VictoryBar` should calculate a domain from the data provided. All Victory components should also use the default `grayscale` theme so that they have sensible styling even when no styles are provided by the user.
+
+### Consistency
+
+Similar props across Victory components should have the same names and operate similarly. For example, the style prop should almost always have the shape:
+
+```
 style={{
-  parent: {
-    border: "1px solid #ccc",
-    height: 500,
-    margin: 50,
-    width: 500
-  },
   data: {
-    fill: "red",
-    opacity: 0.8
+    ...
   },
   labels: {
-    fontSize: 15,
-    padding: 20,
-    fill: "grey"
+    ...
   }
 }}
 ```
 
-- Support animating and static visualizations
-- Take an `animate` prop as an object that can be passed as props to [victory-animation](https://github.com/FormidableLabs/victory-animation)
-- Support rendering svg and g tags via a `standalone` prop (renders svg when true, g when false).
-- Not require users to write d3 or have d3 domain knowledge
-- Be accessible and usable for junior developers
-- Have an intuitive api
+When writing a new component please reference other Victory components when deciding on a set of props. When writing a component for use with VictoryChart, the API should close to a strict superset of the props described in other components like [`VictoryBar`](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-bar/victory-bar.js#L46)
+
+### Animation 
+
+Victory Components animate via a flexible animation wrapper `VictoryTransition` which handles load animations and entrance and exit transitions before interpolation between sets of props with `VictoryAnimation`. All Victory components that render elements (not HOCs that are only responsible for coodinating other components) should return the component wrapped in `VictoryTransition` as in this [example](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L469). Components should also expose their set of transiton parameters via a static method. Most components will use standard transitions: either discrete [as in VictoryScatter](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L22) or continuous [as in VictoryLine](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-line/victory-line.js#L21). It also possible to define custom default transitions where appropriate. For example [VictoryBar defines custom transitions](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-bar/victory-bar.js#L29) which cause the barse to rise from zero. These transitions and other animation properties can all be defined by users via the `animate` prop.
+
+### Events
+
+Victory's event system is as general as possible, with no hard-coded events. Events may be attached to any rendered element, and may target any other rendered element. In order for this system to work, all Victory components need to precalculate the props that will be provided to each element they will be responsible for rendering, and expose that calculation as a static method `getBaseProps` for higher order Victory components to use. The `getBaseProps` method should return an object with props stored by `eventKey` or `index` and type (usually `data` or `labels`). See [this example from VictoryScatter](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/helper-methods.js#L8). Events should be set up in the constructor of each component, and referenced when `componentWillMount` or `componentWillReceiveProps`, [like so](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L368). Events are then [bound to each rendered element](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L396), and any modifications caused by events and stored on state are [merged with the props of the rendered component](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L399).  Any higher components that are responsible for coordinating other Victory components (_i.e._ VictoryChart, VictoryGroup) should make use of the [`VictorySharedEvents` wrapper](https://github.com/FormidableLabs/victory-core/blob/master/src/victory-shared-events/victory-shared-events.js)
+
