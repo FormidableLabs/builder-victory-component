@@ -18,16 +18,7 @@ If you can't find an existing issue, [create a new issue](https://github.com/For
 
 ## 2. Fix bugs
 
-Feel like writing some code? The best way to get familiar with the code base is to fix a bug!
-
-`Option a)` You can browse bugs repo by repo:
-
-* [victory](https://github.com/FormidableLabs/victory/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
-* [victory-chart](https://github.com/FormidableLabs/victory-chart/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
-* [victory-core](https://github.com/FormidableLabs/victory-core/issues?q=is%3Aopen+is%3Aissue+core%3Abug)
-* [victory-pie](https://github.com/FormidableLabs/victory-pie/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
-
-`Option b):` ...or you can [check out our HuBoard](https://huboard.com/FormidableLabs/victory#/) to see issues across all repos.
+Feel like writing some code? The best way to get familiar with the code base is to fix a bug! [Check out our HuBoard](https://huboard.com/FormidableLabs/victory#/) to see issues across all repos.
 
 Fork the repo from the repository front page of the component you want to work on.
 
@@ -110,21 +101,21 @@ Victory is designed to be as flexible as possible. Code should be free of hard-c
 
 **Seperating Rendered Components**
 
-Any rendered component (_i.e._ `<line/>`, `<text/>` and even `<g/>`) should be written as seperate components, and included via `defaultProps` so that they can be overridden the users. This pattern also allows us to use the same code base to support a react native version of Victory. 
+Any component that renders an element (_i.e._ `<line/>`, `<text/>` and even `<g/>`) should be written as a seperate component, and included via `defaultProps` so that they can be overridden the users. This pattern also allows us to use the same code base to support a react native version of Victory. 
 
-These primitive rendered elements are kept in the `victory-core` repo. Please check [here](https://github.com/FormidableLabs/victory-core/tree/master/src/victory-primitives) first before writing a new rendered component. Rendered components should be stateless and as general as possible. [`Point`](https://github.com/FormidableLabs/victory-core/blob/master/src/victory-primitives/point.js) is a good example of a rendered component. Notice that `Point` is written so that it can easily be extended to a [react native compatible version](https://github.com/FormidableLabs/victory-core-native/blob/master/lib/components/victory-primitives/point.js). The appropriate versions of `Point` can then be included as `defaultProps` in [`VictoryScatter`](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L353), and the [native version](https://github.com/FormidableLabs/victory-chart-native/blob/master/lib/components/victory-scatter.js)
+These primitive rendered elements are kept in the `victory-core` repo. Please check [here](https://github.com/FormidableLabs/victory-core/tree/master/src/victory-primitives) first before writing a new rendered component. Rendered components should be stateless and as general as possible. [`Point`](https://github.com/FormidableLabs/victory-core/blob/master/src/victory-primitives/point.js) is a good example of a rendered component. Notice that `Point` is written so that it can easily be extended to a [react native compatible version](https://github.com/FormidableLabs/victory-core-native/blob/master/lib/components/victory-primitives/point.js). The appropriate versions of `Point` can then be included as `defaultProps` in [**standard version**](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L353), and the [**native version**](https://github.com/FormidableLabs/victory-chart-native/blob/master/lib/components/victory-scatter.js) of `VictoryScatter`
 
 **Support Data Accessor Props**
 
-Rather than requiring a rigid data structure, Victory components should provide accessor props for formatting whatever data the user provides into a format the component is expecting. Use this [`createAccessor` function](https://github.com/FormidableLabs/victory-core/blob/master/src/victory-util/helpers.js#L117) to build an accessor from props and use it to format data. 
+Rather than requiring a rigid data structure, Victory components should provide accessor props for formatting whatever data the user provides into a format the component is expecting. Use this [`createAccessor` function](https://github.com/FormidableLabs/victory-core/blob/master/src/victory-util/helpers.js#L117) to build an accessor from props and use it to format data. Notice how `VictoryCandlestick` [makes use of data accessor functions](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-candlestick/helper-methods.js#L76) to support its unique data requirements.
 
 **Support themes**
 
-`defaultProps` should not contain any layout related props because these values may be provided by themes. Necessary layout props should be provided via [`fallbackProps`](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L11) instead, and merged with props and themes as needed.
+`defaultProps` should not contain any layout related props because these values may be provided by themes. Necessary layout props should be provided via `fallbackProps` and merged with props and themes as needed; for example, [see how `VictoryScatter` uses `fallbackProps`](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L11).
 
 ### Sensible Defaults
 
-All Victory components should render _something_ even if no props are provided. This can be accomplished with default data and other `defaultProps`. Victory components should also have sensible behavior even when the minimum of props are provided. For example, if only `data` is provided, a component like `VictoryBar` should calculate a domain from the data provided. All Victory components should also use the default `grayscale` theme so that they have sensible styling even when no styles are provided by the user.
+All Victory components should render _something_ even if no props are provided. This can be accomplished with default data and other `defaultProps`. Victory components should also have sensible behavior even when the minimum of props are provided. For example, if only `data` is provided, components that require a domain should [calculate one from the data provided](https://github.com/FormidableLabs/victory-chart/blob/master/src/helpers/domain.js#L74). All Victory components should also use the default `grayscale` theme so that they have sensible styling even when no styles are provided by the user.
 
 ### Consistency
 
@@ -141,13 +132,27 @@ style={{
 }}
 ```
 
-When writing a new component please reference other Victory components when deciding on a set of props. When writing a component for use with VictoryChart, the API should close to a strict superset of the props described in other components like [`VictoryBar`](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-bar/victory-bar.js#L46)
+When writing a new component please reference other Victory components when deciding on a set of props. When writing a component for use with VictoryChart, the API should include the following props:
+
+- `name`
+- `animate`
+- `categories`
+- `labels`
+- `data`
+- data accessors, usually `x` and `y`
+- `domain` and `scale`
+- `domainPadding`
+- rendered components, usually `dataComponent`, `labelComponent`, `groupComponent`, and `containerComponent`
+- `events` and `sharedEvents`
+- required layout props: `height`, `width`, and `padding`
+- `style` and `theme`
+
 
 ### Animation 
 
-Victory Components animate via a flexible animation wrapper `VictoryTransition` which handles load animations and entrance and exit transitions before interpolation between sets of props with `VictoryAnimation`. All Victory components that render elements (not HOCs that are only responsible for coodinating other components) should return the component wrapped in `VictoryTransition` as in this [example](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L469). Components should also expose their set of transiton parameters via a static method. Most components will use standard transitions: either discrete [as in VictoryScatter](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L22) or continuous [as in VictoryLine](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-line/victory-line.js#L21). It also possible to define custom default transitions where appropriate. For example [VictoryBar defines custom transitions](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-bar/victory-bar.js#L29) which cause the barse to rise from zero. These transitions and other animation properties can all be defined by users via the `animate` prop.
+Victory Components animate via a flexible animation wrapper `VictoryTransition` which handles load animations and entrance and exit transitions before interpolation between sets of props with `VictoryAnimation`. All Victory components that render elements (not higher order components that are only responsible for coodinating other components) should return the component wrapped in `VictoryTransition` as in this [example](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L469). Components should also expose their set of transiton parameters via a static method. Most components will use standard transitions: either discrete [as in VictoryScatter](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L22) or continuous [as in VictoryLine](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-line/victory-line.js#L21). It also possible to define custom default transitions where appropriate. For example [VictoryBar defines custom transitions](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-bar/victory-bar.js#L29) which cause the bars to rise from zero. These transitions and other animation properties can all be defined by users via the `animate` prop.
 
 ### Events
 
-Victory's event system is as general as possible, with no hard-coded events. Events may be attached to any rendered element, and may target any other rendered element. In order for this system to work, all Victory components need to precalculate the props that will be provided to each element they will be responsible for rendering, and expose that calculation as a static method `getBaseProps` for higher order Victory components to use. The `getBaseProps` method should return an object with props stored by `eventKey` or `index` and type (usually `data` or `labels`). See [this example from VictoryScatter](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/helper-methods.js#L8). Events should be set up in the constructor of each component, and referenced when `componentWillMount` or `componentWillReceiveProps`, [like so](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L368). Events are then [bound to each rendered element](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L396), and any modifications caused by events and stored on state are [merged with the props of the rendered component](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L399).  Any higher components that are responsible for coordinating other Victory components (_i.e._ VictoryChart, VictoryGroup) should make use of the [`VictorySharedEvents` wrapper](https://github.com/FormidableLabs/victory-core/blob/master/src/victory-shared-events/victory-shared-events.js)
+Victory's event system is as general as possible, with no hard-coded events. Events may be attached to any rendered element, and may target any other rendered element. In order for this system to work, all Victory components need to precalculate the props that will be provided to each element they will be responsible for rendering, and expose that calculation as a static method `getBaseProps` for higher order Victory components to use. The `getBaseProps` method should return an object with props stored by `eventKey` or `index` and type (usually `data` or `labels`). See [this example from VictoryScatter](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/helper-methods.js#L8). Events should be set up in the constructor of each component, and referenced when `componentWillMount` or `componentWillReceiveProps`, [like so](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L368). Events are then [bound to each rendered element](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L396), and any modifications caused by events and stored on state are [merged with the props of the rendered component](https://github.com/FormidableLabs/victory-chart/blob/master/src/components/victory-scatter/victory-scatter.js#L399).  Any higher components that are responsible for coordinating other Victory components (_i.e._ VictoryChart, VictoryGroup) should make use of the [`VictorySharedEvents` wrapper](https://github.com/FormidableLabs/victory-core/blob/master/src/victory-shared-events/victory-shared-events.js).
 
