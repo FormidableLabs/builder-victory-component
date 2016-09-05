@@ -31,10 +31,6 @@ module.exports = {
       {
         test: /\.json$/,
         loader: archDevRequire.resolve("json-loader")
-      },
-      {
-        test: archDevRequire.resolve("react-addons-perf"),
-        loader: "expose?Perf"
       }
     ])
   }),

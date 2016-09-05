@@ -1,6 +1,11 @@
 "use strict";
 
+var path = require("path");
 var webpackPerfCfg = require("../webpack/webpack.config.perf");
+
+var MAIN_PATH = path.join(process.cwd(), "perf/client/main.js");
+var PREPROCESSORS = {};
+PREPROCESSORS[MAIN_PATH] = ["webpack"];
 
 /*
  * Karma Configuration: "perf" version.
@@ -12,13 +17,13 @@ module.exports = function (config) {
   /* eslint-disable global-require */
   require("./karma.conf")(config);
   config.set({
+    preprocessors: PREPROCESSORS,
     frameworks: ["react-perf", "phantomjs-shim"],
     reporters: ["react-perf-reporter"],
     browsers: ["PhantomJS"],
     basePath: ".", // repository root.
     files: [
-      // Test bundle (must be created via `npm run dev|hot|server-test`)
-      "http://127.0.0.1:3001/assets/main.js"
+      MAIN_PATH
     ],
     webpack: webpackPerfCfg
   });
