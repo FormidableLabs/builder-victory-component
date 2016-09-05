@@ -8,6 +8,7 @@ var LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 var ROOT = process.cwd();
 var SRC = path.join(ROOT, "src");
 var TEST = path.join(ROOT, "test");
+var PERF = path.join(ROOT, "perf");
 
 // **Little Hacky**: Infer the filename and library name from the package name.
 //
@@ -51,10 +52,10 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: /\{.jsx|.js}?$/,
         // Use include specifically of our sources.
         // Do _not_ use an `exclude` here.
-        include: [SRC, TEST],
+        include: [SRC, TEST, PERF],
         // **Note**: Cannot use shorthand `"babel-loader"` or `"babel"` when
         // we are playing around with `NODE_PATH` in builder. Manually
         // resolve path.
