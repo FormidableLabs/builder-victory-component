@@ -1,5 +1,8 @@
 History
 =======
+## 2.5.0
+* Add performance benchmark tasks
+
 ## 2.4.1
 * remove unused babel presets 
 
