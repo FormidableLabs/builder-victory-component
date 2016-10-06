@@ -27,14 +27,6 @@ This archetype assumes an architecture as follows:
 ├── demo                        # Component demo
 │   ├── app.jsx
 │   └── index.html
-├── docs                        # Ecology documentation
-│   ├── README.md
-│   ├── app.jsx
-│   ├── docs.jsx
-│   ├── ecology.md
-│   ├── index.html
-│   ├── static-index.jsx
-│   └── static-render-entry.jsx
 ├── dist                        # Distribution build destination (standalone)
 ├── lib                         # Lib build destination (npm)
 ├── src                         # Component source
@@ -205,15 +197,6 @@ Tasks:
   dev
     [builder-victory-component] builder concurrent server-dev server-test
 
-  docs-build-static
-    [ROOT] echo 'Static docs generation for victory-chart is not supported.'
-
-  docs-dev
-    [builder-victory-component] webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.dev.js --content-base docs
-
-  docs-hot
-    [builder-victory-component] webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.hot.js --inline --hot --content-base docs
-
   hot
     [builder-victory-component] builder concurrent server-hot server-test
 
@@ -222,9 +205,6 @@ Tasks:
 
   lint-demo
     [builder-victory-component] eslint --color --ext .js,.jsx demo
-
-  lint-docs
-    [builder-victory-component] eslint --color --ext .js,.jsx docs
 
   lint-perf
     [builder-victory-component] eslint --color --ext .js,.jsx perf

@@ -27,14 +27,6 @@ This archetype assumes an architecture as follows:
 ├── demo                        # Component demo
 │   ├── app.jsx
 │   └── index.html
-├── docs                        # Ecology documentation
-│   ├── README.md
-│   ├── app.jsx
-│   ├── docs.jsx
-│   ├── ecology.md
-│   ├── index.html
-│   ├── static-index.jsx
-│   └── static-render-entry.jsx
 ├── dist                        # Distribution build destination (standalone)
 ├── lib                         # Lib build destination (npm)
 ├── src                         # Component source
@@ -186,15 +178,6 @@ Tasks:
   dev
     [builder-victory-component] builder concurrent server-dev server-test
 
-  docs-build-static
-    [builder-victory-component] webpack --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.static.js --progress
-
-  docs-dev
-    [builder-victory-component] webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.dev.js --content-base docs
-
-  docs-hot
-    [builder-victory-component] webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/docs/webpack.config.hot.js --hot --content-base docs
-
   hot
     [builder-victory-component] builder concurrent server-hot server-test
 
@@ -219,14 +202,8 @@ Tasks:
   open-hot
     [builder-victory-component] builder concurrent hot open-demo
 
-  push-gh-pages
-    [builder-victory-component] git subtree push --prefix docs/build origin gh-pages
-
   server-dev
     [builder-victory-component] webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/demo/webpack.config.dev.js --colors --content-base demo
-
-  server-docs
-    [builder-victory-component] http-server docs/build
 
   server-hot
     [builder-victory-component] webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/demo/webpack.config.hot.js --colors --inline --hot --content-base demo
