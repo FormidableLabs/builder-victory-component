@@ -1,5 +1,8 @@
 History
 =======
+## 3.0.0
+* Remove ecology docs infrastructure
+
 ## 2.5.0
 * Add performance benchmark tasks
 
