@@ -16,7 +16,10 @@
     "npm:postinstall": "cd lib || builder run build --expand-archetype",
     "npm:preversion": "builder run check",
     "npm:version": "builder run clean && builder run build",
+    "npm:postversion": "publishr postversion",
+    "npm:postpublish": "publishr postpublish",
     "npm:test": "builder run test-frontend",
+    "version-dry-run": "publishr dry-run -V",
     "clean-dist": "rimraf dist",
     "clean-lib": "rimraf lib",
     "clean": "builder run clean-lib && builder run clean-dist",
@@ -64,6 +67,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-react-native": "^1.9.0",
     "lodash-webpack-plugin": "^0.7.0",
+    "publishr": "~0.0.26",
     "rimraf": "^2.4.0",
     "webpack": "^1.12.9"
   },
