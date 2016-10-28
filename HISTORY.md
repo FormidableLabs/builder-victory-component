@@ -1,5 +1,8 @@
 History
 =======
+## 3.1.0
+* Add `publishr` `postversion` and `postpublish` scripts
+* 
 ## 3.0.0
 * Remove ecology docs infrastructure
 

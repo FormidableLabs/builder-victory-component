@@ -33,6 +33,14 @@ This archetype assumes an architecture as follows:
 │   ├── components
 │   │   └── *.jsx?
 │   └── index.js
+├── perf                        # Component performance benchmarks
+    └── .eslintrc               # Configures eslint for tests
+    └── client
+        ├── main.js
+        ├── bench
+        │   └── components
+        │       └── *bench.js?
+        └── test.html
 └── test                        # Component tests
     └── .eslintrc               # Configures eslint for tests
     └── client
@@ -119,16 +127,24 @@ Usage:
 
 Actions:
 
-  help, run, concurrent, envs
+  run, concurrent, envs, help
 
 Flags: General
 
   --builderrc: Path to builder config file (default: `.builderrc`)
 
+  --help: Display help and exit
+
+  --version: Display version and exit
+
+  --quiet: Silence logging
+
+  --log-level: Level to log at (`info`, `warn`, `error`, `none`)
+
 Tasks:
 
   npm:postinstall
-    [builder-victory-component] cd lib || builder run build
+    [builder-victory-component] cd lib || builder run build --expand-archetype
 
   npm:preversion
     [builder-victory-component] builder run check
@@ -138,6 +154,15 @@ Tasks:
 
   npm:version
     [builder-victory-component] builder run clean && builder run build
+
+  npm:postversion
+    [builder-victory-component] publisher postversion
+
+  npm:postpublish
+    [builder-victory-component] publisher postpublish
+
+  version-dry-run
+    [builder-victory-component] publisher dry-run -V 
 
   build
     [builder-victory-component] builder run build-lib && builder run build-dist
@@ -166,6 +191,9 @@ Tasks:
   check-dev
     [builder-victory-component] builder run lint && builder run test-dev
 
+  check-perf
+    [builder-victory-component] builder run lint && build run test-perf
+
   clean
     [builder-victory-component] builder run clean-lib && builder run clean-dist
 
@@ -182,16 +210,19 @@ Tasks:
     [builder-victory-component] builder concurrent server-hot server-test
 
   lint
-    [builder-victory-component] builder concurrent lint-server lint-client lint-client-test
+    [builder-victory-component] builder concurrent lint-source lint-demo lint-docs lint-perf lint-test
 
-  lint-client
-    [builder-victory-component] eslint --color --ext .js,.jsx -c node_modules/builder-victory-component/config/eslint/.eslintrc-client src demo/*.jsx
+  lint-demo
+    [builder-victory-component] eslint --color --ext .js,.jsx demo
 
-  lint-client-test
-    [builder-victory-component] eslint --color --ext .js,.jsx -c node_modules/builder-victory-component/config/eslint/.eslintrc-client-test src test/client
+  lint-perf
+    [builder-victory-component] eslint --color --ext .js,.jsx perf
 
-  lint-server
-    [builder-victory-component] eslint --color -c node_modules/builder-victory-component/config/eslint/.eslintrc-server *.js
+  lint-source
+    [builder-victory-component] eslint --color --ext .js,.jsx src
+
+  lint-test
+    [builder-victory-component] eslint --color --ext .js,.jsx test
 
   open-demo
     [builder-victory-component] opener http://127.0.0.1:3000
@@ -202,6 +233,12 @@ Tasks:
   open-hot
     [builder-victory-component] builder concurrent hot open-demo
 
+  postinstall
+    [ROOT] cd lib || builder run npm:postinstall
+
+  preversion
+    [ROOT] builder run npm:preversion
+
   server-dev
     [builder-victory-component] webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/demo/webpack.config.dev.js --colors --content-base demo
 
@@ -210,6 +247,12 @@ Tasks:
 
   server-test
     [builder-victory-component] webpack-dev-server --port 3001 --config node_modules/builder-victory-component/config/webpack/webpack.config.test.js --colors
+
+  start
+    [ROOT] builder run hot
+
+  test
+    [ROOT] builder run check
 
   test-ci
     [builder-victory-component] builder run test-frontend-ci
@@ -231,6 +274,15 @@ Tasks:
 
   test-frontend-dev
     [builder-victory-component] karma start node_modules/builder-victory-component/config/karma/karma.conf.dev.js
+
+  test-frontend-perf
+    [builder-victory-component] karma start node_modules/builder-victory-component/config/karma/karma.conf.perf.js
+
+  test-perf
+    [builder-victory-component] builder run test-frontend-perf
+
+  version
+    [ROOT] builder run npm:version
 ```
 
 [builder]: https://github.com/FormidableLabs/builder

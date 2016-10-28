@@ -155,6 +155,15 @@ Tasks:
   npm:version
     [builder-victory-component] builder run clean && builder run build
 
+  npm:postversion
+    [builder-victory-component] publisher postversion
+
+  npm:postpublish
+    [builder-victory-component] publisher postpublish
+
+  version-dry-run
+    [builder-victory-component] publisher dry-run -V 
+
   build
     [builder-victory-component] builder run build-lib && builder run build-dist
 
