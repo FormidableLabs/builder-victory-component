@@ -27,6 +27,7 @@
     "build-dist-dev": "webpack --bail --config node_modules/builder-victory-component/config/webpack/webpack.config.dev.js --colors",
     "build-dist": "builder run clean-dist && builder run build-dist-min && builder run build-dist-dev",
     "build-lib": "builder run clean-lib && babel src -d lib --copy-files",
+    "build-watch": "babel src -d lib --copy-files -w",
     "build": "builder run build-lib && builder run build-dist",
     "server-dev": "webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/demo/webpack.config.dev.js --colors --content-base demo",
     "server-hot": "webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/demo/webpack.config.hot.js --colors --inline --hot --content-base demo",
@@ -55,7 +56,7 @@
     "check-cov": "builder run lint && builder run test-cov",
     "check-dev": "builder run lint && builder run test-dev",
     "check-perf": "builder run lint-perf && builder run test-perf",
-    "builder:lint-config": "eslint --color config",
+    "builder:lint-config": "eslint --no-eslintrc --config config/eslint/.eslintrc-config config",
     "builder:lint": "npm run builder:lint-config",
     "builder:check": "npm run builder:lint"
   },
@@ -72,7 +73,7 @@
     "webpack": "^1.12.9"
   },
   "devDependencies": {
-    "builder-support": "^0.3.0",
+    "builder-support": "^0.4.0",
     "eslint": "^1.10.1",
     "eslint-config-defaults": "^7.0.1",
     "eslint-plugin-filenames": "^0.1.2"

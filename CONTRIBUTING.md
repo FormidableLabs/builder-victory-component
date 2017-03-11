@@ -9,11 +9,11 @@ We have a three-way dependency scheme:
 
 * `package.json:dependencies`: Production dependencies for the archetype
   installed in a project.
-* `dev/package.json:dependencies`: Development dependencies for the archetype
-  installed in a project.
 * `package.json:devDependencies`: The development dependencies used _internally_
   for the this archetype during development (self tests, checks, etc.) that
   are **not** part of the overall archeype outside workflow.
+* `../builder-victory-component-dev/package.json:dependencies`: Development
+  dependencies for the archetype installed in a project.
 
 ## Checks, Tests
 
@@ -21,13 +21,15 @@ Run `npm run builder:check`
 
 ## Documentation
 
-To generate the usage snippet in the `README.md`, first go to a project that _uses_ the archetype and then run:
+To generate the usage snippet in the `README.md`, first go to a project that
+_uses_ the archetype and then run:
 
 ```sh
 $ builder help builder-victory-component
 ```
 
-Then paste in the output. Auto-generating the usage snippet is coming! See https://github.com/FormidableLabs/builder/issues/12.
+Then paste in the output. Auto-generating the usage snippet is coming!
+See https://github.com/FormidableLabs/builder/issues/12.
 
 ## Release
 
@@ -35,20 +37,30 @@ For tagged official releases _only_, make sure to:
 
 1. Update appropriate `HISTORY.md` notes
 2. Bump `package.json` version
-3. Generate a new `ARCHETYPE-dev` `package.json`
+3. Generate a new `ARCHETYPE-dev` `package.json`. Make sure that you have
+   https://github.com/FormidableLabs/builder-victory-component-dev checked out
+   at a parallel location to this project and in a state ready to receive
+   code / git changes for publishing.
 4. Add to git, tag, and publish
 
 ```sh
+# Publish main archetype
 $ vim HISTORY.md              # Version notes
 $ vim package.json            # Bump version
-$ builder-support gen-dev     # Generate `dev/*` files
+$ builder-support gen-dev     # Create `../builder-victory-component-dev/` files
 $ npm run builder:check       # Last check!
 $ git add package.json dev HISTORY.md
-$ git commit -m "Version bump"
+$ git commit -m "Version NUMBER"
 $ git tag -a "vNUMBER" -m "Version NUMBER"
 $ git push && git push --tags
-$ npm publish                 # Publish main project
-$ cd dev && npm publish       # Publish dev project
+$ npm publish
+
+# Publish dev archetype in sister directory
+$ cd ../builder-victory-component-dev
+$ git commit -m "Version NUMBER"
+$ git tag -a "vNUMBER" -m "Version NUMBER"
+$ git push && git push --tags
+$ npm publish
 ```
 ## Contributor Covenant Code of Conduct
 
@@ -57,9 +69,9 @@ $ cd dev && npm publish       # Publish dev project
 In the interest of fostering an open and welcoming environment, we as
 contributors and maintainers pledge to making participation in our project and
 our community a harassment-free experience for everyone, regardless of age, body
-size, disability, ethnicity, gender identity and expression, level of experience,
-nationality, personal appearance, race, religion, or sexual identity and
-orientation.
+size, disability, ethnicity, gender identity and expression, level of
+experience, nationality, personal appearance, race, religion, or sexual identity
+and orientation.
 
 ### Our Standards
 
@@ -119,8 +131,8 @@ members of the project's leadership.
 
 ### Attribution
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4,
-available at [http://contributor-covenant.org/version/1/4][version]
+This Code of Conduct is adapted from the [Contributor Covenant][homepage],
+version 1.4, available at [http://contributor-covenant.org/version/1/4][version]
 
 [homepage]: http://contributor-covenant.org
 [version]: http://contributor-covenant.org/version/1/4/

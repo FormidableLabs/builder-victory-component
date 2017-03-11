@@ -1,8 +1,15 @@
 History
 =======
+## Unreleased
+* Move dev archetype to separate project:
+  https://github.com/FormidableLabs/builder-victory-component-dev
+* Update CI matrix.
+* Start adding development yarn support.
+* Add `build-watch` script for just watching babel transforms.
+
 ## 3.1.0
 * Add `publishr` `postversion` and `postpublish` scripts
-* 
+
 ## 3.0.0
 * Remove ecology docs infrastructure
 
@@ -10,19 +17,19 @@ History
 * Add performance benchmark tasks
 
 ## 2.4.1
-* remove unused babel presets 
+* remove unused babel presets
 
 ## 2.4.0
 * use `"flattening": true` config for `lodash-webpack-plugin`
 
 ## 2.3.0
-* use babel-preset-react-native (non stage 0) 
+* use babel-preset-react-native (non stage 0)
 
 ## 2.2.0
 * updates babelrc to support victory native
 
 ## 2.1.8
-* Use webpack json loader 
+* Use webpack json loader
 
 ## 2.1.7
 * Upgrade `formidable-landers` to use the latest Radium

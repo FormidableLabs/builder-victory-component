@@ -1,4 +1,5 @@
 "use strict";
+
 var LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
 module.exports = {

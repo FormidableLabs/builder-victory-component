@@ -1,4 +1,4 @@
 ---
-  extends:
-    - "defaults/configurations/walmart/es5-node"
-    - ".eslintrc-base"
+extends:
+  - "defaults/configurations/walmart/es5-node"
+  - ".eslintrc-base"
