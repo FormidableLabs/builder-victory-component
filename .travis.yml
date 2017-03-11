@@ -2,8 +2,8 @@ language: node_js
 
 node_js:
   - "0.12"
-  - "4.2"
-  - "5.7"
+  - "4"
+  - "6"
 
 # Use container-based Travis infrastructure.
 sudo: false
@@ -16,12 +16,9 @@ env:
   matrix:
     - NPM_2=true
     - NPM_3=true
+    # TODO: Add in `yarn` to the matrix. Maybe remove npm@2...
 
 before_install:
-  # GUI for real browsers.
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-
   # Choose either 2 or 3 explicitly.
   - 'if [ "$NPM_2" = true ]; then npm install -g npm@2; else true; fi'
   - 'if [ "$NPM_3" = true ]; then npm install -g npm@3; else true; fi'
