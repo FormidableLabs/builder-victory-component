@@ -1,3 +1,0 @@
---- # Internal eslint configuration for archetype JavaScript files
-extends: "./eslint/.eslintrc-config"
-root: true

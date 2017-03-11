@@ -56,7 +56,7 @@
     "check-cov": "builder run lint && builder run test-cov",
     "check-dev": "builder run lint && builder run test-dev",
     "check-perf": "builder run lint-perf && builder run test-perf",
-    "builder:lint-config": "eslint --config config/.eslintrc config",
+    "builder:lint-config": "eslint --no-eslintrc --config config/eslint/.eslintrc-config config",
     "builder:lint": "npm run builder:lint-config",
     "builder:check": "npm run builder:lint"
   },
