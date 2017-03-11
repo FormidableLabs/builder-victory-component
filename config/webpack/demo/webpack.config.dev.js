@@ -1,5 +1,14 @@
 "use strict";
+
+var path = require("path");
+
 var LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
+
+// Use Node to resolve core `victory*` libraries so we can place anywhere
+// in development.
+var nodeResolve = function (mod) {
+  return path.dirname(require.resolve(path.join(mod, "package.json")));
+};
 
 module.exports = {
 
@@ -24,7 +33,10 @@ module.exports = {
     reasons: true
   },
   resolve: {
-    extensions: ["", ".js", ".jsx"]
+    extensions: ["", ".js", ".jsx"],
+    alias: {
+      "victory-core": nodeResolve("victory-core")
+    }
   },
   module: {
     loaders: [

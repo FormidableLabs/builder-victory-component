@@ -141,10 +141,20 @@ Flags: General
 
   --log-level: Level to log at (`info`, `warn`, `error`, `none`)
 
+  --env: JSON string of environment variables to add to process
+
+  --env-path: JSON file path of environment variables to add to process
+
 Tasks:
 
   npm:postinstall
     [builder-victory-component] cd lib || builder run build --expand-archetype
+
+  npm:postpublish
+    [builder-victory-component] publishr postpublish
+
+  npm:postversion
+    [builder-victory-component] publishr postversion
 
   npm:preversion
     [builder-victory-component] builder run check
@@ -154,15 +164,6 @@ Tasks:
 
   npm:version
     [builder-victory-component] builder run clean && builder run build
-
-  npm:postversion
-    [builder-victory-component] publisher postversion
-
-  npm:postpublish
-    [builder-victory-component] publisher postpublish
-
-  version-dry-run
-    [builder-victory-component] publisher dry-run -V 
 
   build
     [builder-victory-component] builder run build-lib && builder run build-dist
@@ -179,6 +180,9 @@ Tasks:
   build-lib
     [builder-victory-component] builder run clean-lib && babel src -d lib --copy-files
 
+  build-watch
+    [builder-victory-component] babel src -d lib --copy-files -w
+
   check
     [builder-victory-component] builder run lint && builder run npm:test
 
@@ -192,7 +196,7 @@ Tasks:
     [builder-victory-component] builder run lint && builder run test-dev
 
   check-perf
-    [builder-victory-component] builder run lint && build run test-perf
+    [builder-victory-component] builder run lint-perf && builder run test-perf
 
   clean
     [builder-victory-component] builder run clean-lib && builder run clean-dist
@@ -210,7 +214,7 @@ Tasks:
     [builder-victory-component] builder concurrent server-hot server-test
 
   lint
-    [builder-victory-component] builder concurrent lint-source lint-demo lint-docs lint-perf lint-test
+    [builder-victory-component] builder concurrent lint-source lint-demo lint-test
 
   lint-demo
     [builder-victory-component] eslint --color --ext .js,.jsx demo
@@ -236,6 +240,12 @@ Tasks:
   postinstall
     [ROOT] cd lib || builder run npm:postinstall
 
+  postpublish
+    [ROOT] builder run npm:postpublish
+
+  postversion
+    [ROOT] builder run npm:postversion
+
   preversion
     [ROOT] builder run npm:preversion
 
@@ -250,6 +260,9 @@ Tasks:
 
   start
     [ROOT] builder run hot
+
+  storybook
+    [ROOT] start-storybook -p 3001
 
   test
     [ROOT] builder run check
@@ -282,7 +295,10 @@ Tasks:
     [builder-victory-component] builder run test-frontend-perf
 
   version
-    [ROOT] builder run npm:version && git add dist && git commit -m "Commit 'dist/' for publishing"
+    [ROOT] builder run npm:version
+
+  version-dry-run
+    [builder-victory-component] publishr dry-run -V
 ```
 
 [builder]: https://github.com/FormidableLabs/builder
