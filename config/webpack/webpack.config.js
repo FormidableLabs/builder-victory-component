@@ -85,5 +85,7 @@ module.exports = {
       "process.env.NODE_ENV": JSON.stringify("production")
     }),
     new webpack.SourceMapDevToolPlugin({filename: "[file].map"})
-  ]
-};
+  ],
+  devServer: {
+    port: parseInt(process.env.npm_package_config_wds_port_dev || 3000)
+  }};
