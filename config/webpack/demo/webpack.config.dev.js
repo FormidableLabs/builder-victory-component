@@ -7,6 +7,7 @@ var ALIASES = require("../util/aliases");
 module.exports = {
 
   devServer: {
+    port: parseInt(process.env.npm_package_config_wds_port_dev || 3000),
     contentBase: "./demo",
     noInfo: false
   },
