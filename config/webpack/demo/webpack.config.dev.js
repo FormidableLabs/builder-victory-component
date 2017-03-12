@@ -2,6 +2,8 @@
 
 var LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
+var ALIASES = require("../util/aliases");
+
 module.exports = {
 
   devServer: {
@@ -25,7 +27,8 @@ module.exports = {
     reasons: true
   },
   resolve: {
-    extensions: ["", ".js", ".jsx"]
+    extensions: ["", ".js", ".jsx"],
+    alias: ALIASES
   },
   module: {
     loaders: [

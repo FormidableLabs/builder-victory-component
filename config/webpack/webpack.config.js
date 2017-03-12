@@ -3,6 +3,7 @@
 var path = require("path");
 var webpack = require("webpack");
 var LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
+var ALIASES = require("./util/aliases");
 
 // Replace with `__dirname` if using in project root.
 var ROOT = process.cwd();
@@ -47,7 +48,8 @@ module.exports = {
     libraryTarget: "umd"
   },
   resolve: {
-    extensions: ["", ".js", ".jsx"]
+    extensions: ["", ".js", ".jsx"],
+    alias: ALIASES
   },
   module: {
     loaders: [
