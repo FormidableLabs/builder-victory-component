@@ -12,6 +12,10 @@
     "url": "https://github.com/FormidableLabs/builder-victory-component/issues"
   },
   "homepage": "https://github.com/FormidableLabs/builder-victory-component",
+  "config": {
+    "wds_port_dev": 3000,
+    "wds_port_test": 3001
+  },
   "scripts": {
     "npm:postinstall": "cd lib || builder run build --expand-archetype",
     "npm:preversion": "builder run check",
@@ -29,9 +33,9 @@
     "build-lib": "builder run clean-lib && babel src -d lib --copy-files",
     "build-watch": "babel src -d lib --copy-files -w",
     "build": "builder run build-lib && builder run build-dist",
-    "server-dev": "webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/demo/webpack.config.dev.js --colors --content-base demo",
-    "server-hot": "webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/demo/webpack.config.hot.js --colors --inline --hot --content-base demo",
-    "server-test": "webpack-dev-server --port 3001 --config node_modules/builder-victory-component/config/webpack/webpack.config.test.js --colors",
+    "server-dev": "webpack-dev-server --config node_modules/builder-victory-component/config/webpack/demo/webpack.config.dev.js --colors --content-base demo",
+    "server-hot": "webpack-dev-server --config node_modules/builder-victory-component/config/webpack/demo/webpack.config.hot.js --colors --inline --hot --content-base demo",
+    "server-test": "webpack-dev-server --config node_modules/builder-victory-component/config/webpack/webpack.config.test.js --colors",
     "dev": "builder concurrent server-dev server-test",
     "hot": "builder concurrent server-hot server-test",
     "open-demo": "opener http://127.0.0.1:3000",

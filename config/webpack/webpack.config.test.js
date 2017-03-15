@@ -52,5 +52,8 @@ module.exports = {
       }
     ])
   }),
-  devtool: "source-map"
+  devtool: "source-map",
+  devServer: {
+    port: parseInt(process.env.npm_package_config_wds_port_test || 3001)
+  }
 };
