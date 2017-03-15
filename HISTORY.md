@@ -1,6 +1,6 @@
 History
 =======
-## Unreleased
+## 3.2.0
 * Move dev archetype to separate project:
   https://github.com/FormidableLabs/builder-victory-component-dev
 * Update CI matrix.
