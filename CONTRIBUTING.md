@@ -57,7 +57,7 @@ $ npm publish
 
 # Publish dev archetype in sister directory
 $ cd ../builder-victory-component-dev
-$ git add package.json
+$ git add .
 $ git commit -m "Version NUMBER"
 $ git tag -a "vNUMBER" -m "Version NUMBER"
 $ git push && git push --tags
