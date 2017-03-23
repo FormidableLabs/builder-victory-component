@@ -1,5 +1,9 @@
 History
 =======
+## 3.2.1
+https://github.com/FormidableLabs/builder-victory-component-dev/pull/2
+* Add a webpack dependency to `builder-victory-component-dev` to ensure correct webpack version.
+
 ## 3.2.0
 * Move dev archetype to separate project:
   https://github.com/FormidableLabs/builder-victory-component-dev
