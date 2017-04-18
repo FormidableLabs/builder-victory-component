@@ -54,7 +54,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)$/,
         // Use include specifically of our sources.
         // Do _not_ use an `exclude` here.
         include: [SRC, TEST, PERF],
