@@ -10,6 +10,7 @@ var _ = archDevRequire("lodash");
 
 // Replace with `__dirname` if using in project root.
 var ROOT = process.cwd();
+var WDS_PORT = 3001;
 
 module.exports = {
   cache: true,
@@ -54,6 +55,6 @@ module.exports = {
   }),
   devtool: "source-map",
   devServer: {
-    port: parseInt(process.env.npm_package_config_wds_port_test || 3001)
+    port: parseInt(process.env.npm_package_config_wds_port_test || WDS_PORT)
   }
 };
