@@ -1,6 +1,10 @@
 History
 =======
 
+## 4.0.0
+* Switch to `eslint-config-formidable`
+* Many other dependency updates.
+
 ## 3.2.3
 * Fix errant publish in `builder-victory-component-dev` in `3.2.2`
 
