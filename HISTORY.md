@@ -1,7 +1,13 @@
 History
 =======
+
+## 3.2.3
+* Fix errant publish in `builder-victory-component-dev` in `3.2.2`
+
+## 3.2.2
+* Add external for `prop-types`.
+
 ## 3.2.1
-https://github.com/FormidableLabs/builder-victory-component-dev/pull/2
 * Add a webpack dependency to `builder-victory-component-dev` to ensure correct webpack version.
 
 ## 3.2.0
