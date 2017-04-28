@@ -1,7 +1,6 @@
 language: node_js
 
 node_js:
-  - "0.12"
   - "4"
   - "6"
 
@@ -14,14 +13,14 @@ branches:
 
 env:
   matrix:
-    - NPM_2=true
-    - NPM_3=true
-    # TODO: Add in `yarn` to the matrix. Maybe remove npm@2...
+    - TEST_NPM_VERSION=2
+    - TEST_NPM_VERSION=3
+    - TEST_NPM_VERSION=4
+    # TODO: Add in `yarn` to the matrix.
 
 before_install:
-  # Choose either 2 or 3 explicitly.
-  - 'if [ "$NPM_2" = true ]; then npm install -g npm@2; else true; fi'
-  - 'if [ "$NPM_3" = true ]; then npm install -g npm@3; else true; fi'
+  # Use the requested version of npm
+  - npm install -g "npm@$TEST_NPM_VERSION"
 
 script:
   # Check archetype.
