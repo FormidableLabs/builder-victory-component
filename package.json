@@ -66,20 +66,20 @@
   },
   "dependencies": {
     "babel-cli": "^6.6.5",
-    "babel-core": "^6.10.4",
+    "babel-core": "^6.13.2",
     "babel-loader": "^6.2.4",
     "babel-plugin-lodash": "^3.1.2",
     "babel-preset-react": "^6.5.0",
     "babel-preset-react-native": "^1.9.0",
     "lodash-webpack-plugin": "^0.7.0",
-    "publishr": "~0.0.26",
     "rimraf": "^2.4.0",
     "webpack": "^1.12.9"
   },
   "devDependencies": {
     "builder-support": "^0.4.0",
-    "eslint": "^1.10.1",
-    "eslint-config-defaults": "^7.0.1",
-    "eslint-plugin-filenames": "^0.1.2"
+    "eslint": "^2.0.0",
+    "eslint-config-formidable": "^2.0.1",
+    "eslint-plugin-filenames": "^1.2.0",
+    "eslint-plugin-import": "^2.2.0"
   }
 }

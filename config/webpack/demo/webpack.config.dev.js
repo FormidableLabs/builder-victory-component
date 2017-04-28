@@ -8,11 +8,12 @@ var ALIASES = require("../util/aliases");
 var ROOT = process.cwd();
 var SRC = path.join(ROOT, "src");
 var DEMO = path.join(ROOT, "demo");
+var WDS_PORT = 3000;
 
 module.exports = {
 
   devServer: {
-    port: parseInt(process.env.npm_package_config_wds_port_dev || 3000),
+    port: parseInt(process.env.npm_package_config_wds_port_dev || WDS_PORT),
     contentBase: "./demo",
     noInfo: false
   },

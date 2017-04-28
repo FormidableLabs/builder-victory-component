@@ -92,6 +92,6 @@ module.exports = {
       // is in condtionals like: `if (process.env.NODE_ENV === "production")`
       "process.env.NODE_ENV": JSON.stringify("production")
     }),
-    new webpack.SourceMapDevToolPlugin({filename: "[file].map"})
+    new webpack.SourceMapDevToolPlugin({ filename: "[file].map" })
   ]
 };

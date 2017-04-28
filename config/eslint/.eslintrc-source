@@ -1,4 +1,9 @@
 ---
 extends:
-  - "defaults/configurations/walmart/es6-react"
+  - "formidable/configurations/es6-react"
   - ".eslintrc-base"
+
+rules:
+  # Don't check victory deps until bugfix for NODE_PATH uptream.
+  # https://github.com/benmosher/eslint-plugin-import/issues/142
+  import/no-unresolved: [2, { ignore: ["^(builder-|)victory"] }]
