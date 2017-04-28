@@ -1,6 +1,9 @@
 History
 =======
 
+## 3.2.3
+* Fix errant publish in `builder-victory-component-dev` in `3.2.2`
+
 ## 3.2.2
 * Add external for `prop-types`.
 
