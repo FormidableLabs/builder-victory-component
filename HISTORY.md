@@ -1,5 +1,7 @@
 History
 =======
+## 4.0.1
+* Add `publishr` dependency to `builder-victory-component-dev`
 
 ## 4.0.0
 * Switch to `eslint-config-formidable`
