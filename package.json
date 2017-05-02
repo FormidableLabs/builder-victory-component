@@ -72,6 +72,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-react-native": "^1.9.0",
     "lodash-webpack-plugin": "^0.7.0",
+    "publishr": "~0.0.26",
     "rimraf": "^2.4.0",
     "webpack": "^1.12.9"
   },
