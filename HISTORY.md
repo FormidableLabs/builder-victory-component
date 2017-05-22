@@ -1,5 +1,9 @@
 History
 =======
+
+## 4.0.2
+* Bump `publishr` dependency in `builder-victory-component-dev`
+
 ## 4.0.1
 * Add `publishr` dependency to `builder-victory-component-dev`
 
