@@ -1,6 +1,9 @@
 History
 =======
 
+## 4.0.3
+* Add exceptions for eslint no-magic-numbers
+
 ## 4.0.2
 * Bump `publishr` dependency in `builder-victory-component-dev`
 
