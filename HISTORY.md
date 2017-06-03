@@ -1,6 +1,9 @@
 History
 =======
 
+## 4.0.4
+* Add exceptions for eslint no-magic-numbers for common angles (90, 180, 270, 360)
+
 ## 4.0.3
 * Add exceptions for eslint no-magic-numbers
 
