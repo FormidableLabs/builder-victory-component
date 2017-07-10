@@ -1,0 +1,18 @@
+{
+  "presets": ["react"],
+  "plugins": [
+    "babel-plugin-syntax-class-properties",
+    "babel-plugin-transform-object-rest-spread",
+    "lodash"
+  ],
+  "env": {
+    "commonjs": {
+      "plugins": [
+        ["transform-es2015-modules-commonjs", {
+          "strict": false,
+          "allowTopLevelThis": true
+        }]
+      ]
+    }
+  }
+}
