@@ -35,6 +35,5 @@ var toObject = function (extraPath) {
 };
 
 module.exports = {
-  pkgs: toObject(),
-  libs: toObject("lib/")
+  pkgs: toObject()
 };

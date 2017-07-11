@@ -5,9 +5,8 @@ var LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
 var aliases = require("../util/aliases");
 
-var ROOT = process.cwd();
-var SRC = path.join(ROOT, "src");
-var DEMO = path.join(ROOT, "demo");
+var SRC = path.resolve("src");
+var DEMO = path.resolve("demo");
 var WDS_PORT = 3000;
 
 module.exports = {
@@ -34,7 +33,7 @@ module.exports = {
     reasons: true
   },
   resolve: {
-    extensions: ["", ".js", ".jsx"],
+    extensions: [".js", ".jsx"],
     alias: aliases.pkgs
   },
   module: {
