@@ -3,7 +3,7 @@
 var path = require("path");
 var webpack = require("webpack");
 var LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
-var ALIASES = require("./util/aliases");
+var aliases = require("./util/aliases");
 
 // Replace with `__dirname` if using in project root.
 var ROOT = process.cwd();
@@ -57,7 +57,7 @@ module.exports = {
   },
   resolve: {
     extensions: ["", ".js", ".jsx"],
-    alias: ALIASES
+    alias: aliases.pkgs
   },
   module: {
     loaders: [
@@ -69,7 +69,11 @@ module.exports = {
         // **Note**: Cannot use shorthand `"babel-loader"` or `"babel"` when
         // we are playing around with `NODE_PATH` in builder. Manually
         // resolve path.
-        loader: require.resolve("babel-loader")
+        loader: require.resolve("babel-loader"),
+        // CommonJS module transforms.
+        query: {
+          forceEnv: "commonjs"
+        }
       }
     ]
   },

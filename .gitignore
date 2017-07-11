@@ -1,8 +1,8 @@
-\.git
-\.hg
+.git
+.hg
 
-\.DS_Store
-\.project
+.DS_Store
+.project
 bower_components
 node_modules
 phantomjsdriver.log
@@ -17,3 +17,6 @@ build
 */build
 coverage
 Procfile
+
+# Editors
+.vscode
