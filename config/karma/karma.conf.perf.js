@@ -3,6 +3,10 @@
 var path = require("path");
 var webpackPerfCfg = require("../webpack/webpack.config.perf");
 
+// Remove `""` extensions because of webpack bug.
+// https://github.com/FormidableLabs/builder-victory-component/issues/91
+webpackPerfCfg.resolve.extensions = webpackPerfCfg.resolve.extensions.filter(Boolean);
+
 var MAIN_PATH = path.join(process.cwd(), "perf/client/main.js");
 var PREPROCESSORS = {};
 PREPROCESSORS[MAIN_PATH] = ["webpack"];

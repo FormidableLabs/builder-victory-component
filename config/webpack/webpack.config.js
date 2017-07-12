@@ -28,7 +28,7 @@ var libName = libPath
 module.exports = {
   cache: true,
   context: SRC,
-  entry: "./index.js",
+  entry: "./index",
   externals: [
     {
       "react": {
@@ -54,13 +54,15 @@ module.exports = {
     libraryTarget: "umd"
   },
   resolve: {
-    extensions: [".js", ".jsx"],
-    alias: aliases.pkgs
+    extensions: ["", ".js"],
+    // Alias to ESM for resolution for tree shaking + modern stuff.
+    alias: aliases.es
   },
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        // Transform source
+        test: /\.js$/,
         // Use include specifically of our sources.
         // Do _not_ use an `exclude` here.
         include: [SRC, TEST, PERF],
@@ -71,6 +73,20 @@ module.exports = {
         // CommonJS module transforms.
         query: {
           forceEnv: "commonjs"
+        }
+      },
+      {
+        // Minimal babel processing of built victory ESM deps -> CommonJS
+        test: /\.js$/,
+        include: Object.keys(aliases.es).map(function (k) { return aliases.es[k]; }),
+        loader: require.resolve("babel-loader"),
+        query: {
+          plugins: [
+            ["transform-es2015-modules-commonjs", {
+              "strict": false,
+              "allowTopLevelThis": true
+            }]
+          ]
         }
       }
     ]

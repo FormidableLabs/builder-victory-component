@@ -19,7 +19,10 @@ var VICTORY_PKGS = [
   // Try to Node resolve
   .map(function (pkg) {
     try {
-      return { pkg: pkg, path: require.resolve(pkg) };
+      return {
+        pkg: pkg,
+        path: path.dirname(require.resolve(path.join(pkg, "package.json")))
+      };
     } catch (err) {
       return null;
     }
@@ -35,5 +38,7 @@ var toObject = function (extraPath) {
 };
 
 module.exports = {
-  pkgs: toObject()
+  pkgs: toObject(),     // The root package
+  es: toObject("es"),   // ES module build
+  lib: toObject("lib")  // CommonJS build
 };

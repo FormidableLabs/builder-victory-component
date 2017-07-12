@@ -19,6 +19,7 @@ module.exports = {
 
   output: {
     path: "./demo",
+    pathinfo: true,
     filename: "main.js",
     publicPath: "/assets/"
   },
@@ -33,13 +34,14 @@ module.exports = {
     reasons: true
   },
   resolve: {
-    extensions: [".js", ".jsx"],
-    alias: aliases.pkgs
+    extensions: ["", ".js"],
+    alias: aliases.es
   },
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        // Transform source
+        test: /\.js$/,
         // Use include specifically of our sources.
         // Do _not_ use an `exclude` here.
         include: [SRC, DEMO],
@@ -50,6 +52,20 @@ module.exports = {
         // CommonJS module transforms.
         query: {
           forceEnv: "commonjs"
+        }
+      },
+      {
+        // Minimal babel processing of built victory ESM deps -> CommonJS
+        test: /\.js$/,
+        include: Object.keys(aliases.es).map(function (k) { return aliases.es[k]; }),
+        loader: require.resolve("babel-loader"),
+        query: {
+          plugins: [
+            ["transform-es2015-modules-commonjs", {
+              "strict": false,
+              "allowTopLevelThis": true
+            }]
+          ]
         }
       }
     ]
