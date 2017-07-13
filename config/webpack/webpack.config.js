@@ -57,7 +57,7 @@ module.exports = {
     alias: aliases.pkgs
   },
   module: {
-    loaders: [
+    rules: [
       {
         // Transform source
         test: /\.js$/,

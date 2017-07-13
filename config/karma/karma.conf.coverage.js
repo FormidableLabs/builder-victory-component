@@ -15,14 +15,13 @@ module.exports = function (config) {
   /* eslint-disable global-require */
   require("./karma.conf")(config);
   config.set({
-    reporters: ["spec", "coverage"],
+    reporters: ["spec", "coverage-istanbul"],
     webpack: webpackCovCfg,
-    coverageReporter: {
-      reporters: [
-        { type: "json", file: "coverage.json" },
-        { type: "lcov" },
-        { type: "text-summary" }
-      ],
+    coverageIstanbulReporter: {
+      reports: ["json", "lcov", "text-summary"],
+      "report-config": {
+        json: { file: "coverage.json" }
+      },
       dir: path.join(ROOT, "coverage/client")
     }
   });

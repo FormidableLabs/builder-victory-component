@@ -26,7 +26,7 @@ module.exports = {
     }
   }),
   module: _.assign({}, prodCfg.module, {
-    loaders: (prodCfg.module.loaders || []).concat([
+    rules: (prodCfg.module.rules || []).concat([
       {
         test: /\.json$/,
         loader: archDevRequire.resolve("json-loader")

@@ -43,7 +43,7 @@ module.exports = {
       /\/sinon\.js/
     ],
     // enzyme webpack issue https://github.com/airbnb/enzyme/issues/47
-    loaders: (prodCfg.module.loaders || []).concat([
+    rules: (prodCfg.module.rules || []).concat([
       {
         test: /\.json$/,
         loader: archDevRequire.resolve("json-loader")
