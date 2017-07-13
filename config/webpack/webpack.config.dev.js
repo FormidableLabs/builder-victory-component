@@ -16,7 +16,9 @@ config.plugins = [
     "placeholders": true,
     "shorthands": true
   }),
-  new webpack.SourceMapDevToolPlugin("[file].map")
+  new webpack.SourceMapDevToolPlugin({
+    filename: "[file].map"
+  })
 ];
 
 // Export mutated base.
