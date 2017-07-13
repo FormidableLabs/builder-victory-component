@@ -1,6 +1,9 @@
 History
 =======
 
+## 5.0.1
+* Fix and upgrade instabul instrumentation for test coverage.
+
 ## 5.0.0
 * Output ES `es/` sources directory. Upgrade to webpack3.
 
