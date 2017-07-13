@@ -54,9 +54,7 @@ module.exports = {
     libraryTarget: "umd"
   },
   resolve: {
-    extensions: ["", ".js"],
-    // Alias to ESM for resolution for tree shaking + modern stuff.
-    alias: aliases.es
+    alias: aliases.pkgs
   },
   module: {
     loaders: [
@@ -69,25 +67,7 @@ module.exports = {
         // **Note**: Cannot use shorthand `"babel-loader"` or `"babel"` when
         // we are playing around with `NODE_PATH` in builder. Manually
         // resolve path.
-        loader: require.resolve("babel-loader"),
-        // CommonJS module transforms.
-        query: {
-          forceEnv: "commonjs"
-        }
-      },
-      {
-        // Minimal babel processing of built victory ESM deps -> CommonJS
-        test: /\.js$/,
-        include: Object.keys(aliases.es).map(function (k) { return aliases.es[k]; }),
-        loader: require.resolve("babel-loader"),
-        query: {
-          plugins: [
-            ["transform-es2015-modules-commonjs", {
-              "strict": false,
-              "allowTopLevelThis": true
-            }]
-          ]
-        }
+        loader: require.resolve("babel-loader")
       }
     ]
   },

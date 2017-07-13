@@ -20,7 +20,6 @@ module.exports = {
     publicPath: "/assets/"
   },
   resolve: _.merge({}, prodCfg.resolve, {
-    extensions: prodCfg.resolve.extensions.concat([".json"]),
     alias: {
       // Allow root import of `src/FOO` from ROOT/src.
       src: path.join(ROOT, "src")

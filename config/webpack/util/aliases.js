@@ -38,7 +38,5 @@ var toObject = function (extraPath) {
 };
 
 module.exports = {
-  pkgs: toObject(),     // The root package
-  es: toObject("es"),   // ES module build
-  lib: toObject("lib")  // CommonJS build
+  pkgs: toObject()
 };

@@ -25,13 +25,13 @@ This archetype assumes an architecture as follows:
 ├── .eslintrc                   # Configures eslint
 ├── package.json
 ├── demo                        # Component demo
-│   ├── app.jsx
+│   ├── app.js
 │   └── index.html
 ├── dist                        # Distribution build destination (standalone)
 ├── lib                         # Lib build destination (npm)
 ├── src                         # Component source
 │   ├── components
-│   │   └── *.jsx?
+│   │   └── *.js
 │   └── index.js
 ├── perf                        # Component performance benchmarks
     └── .eslintrc               # Configures eslint for tests
@@ -47,7 +47,7 @@ This archetype assumes an architecture as follows:
         ├── main.js
         ├── spec
         │   └── components
-        │       └── *.jsx?
+        │       └── *.js
         └── test.html
 ```
 
@@ -145,16 +145,24 @@ Flags: General
 
   --env-path: JSON file path of environment variables to add to process
 
+Task Configs:
+
+  wds_port_dev
+    [builder-victory-component] 3000
+
+  wds_port_test
+    [builder-victory-component] 3001
+
 Tasks:
 
   npm:postinstall
-    [builder-victory-component] cd lib || builder run build --expand-archetype
+    [builder-victory-component] builder run build --expand-archetype
 
   npm:postpublish
-    [builder-victory-component] publishr postpublish
+    [builder-victory-component] publishr postpublish -V
 
   npm:postversion
-    [builder-victory-component] publishr postversion
+    [builder-victory-component] publishr postversion -V
 
   npm:preversion
     [builder-victory-component] builder run check
@@ -166,10 +174,13 @@ Tasks:
     [builder-victory-component] builder run clean && builder run build
 
   build
-    [builder-victory-component] builder run build-lib && builder run build-dist
+    [builder-victory-component] builder concurrent --queue=1 build-libs build-dist
+
+  build-babel
+    [builder-victory-component] babel src --copy-files
 
   build-dist
-    [builder-victory-component] builder run clean-dist && builder run build-dist-min && builder run build-dist-dev
+    [builder-victory-component] builder run clean-dist && builder concurrent --queue=1 build-dist-min build-dist-dev
 
   build-dist-dev
     [builder-victory-component] webpack --bail --config node_modules/builder-victory-component/config/webpack/webpack.config.dev.js --colors
@@ -177,11 +188,17 @@ Tasks:
   build-dist-min
     [builder-victory-component] webpack --bail --config node_modules/builder-victory-component/config/webpack/webpack.config.js --colors
 
+  build-es
+    [builder-victory-component] builder run clean-es && builder run --env '{"BABEL_ENV":"es"}' build-babel -- -d es
+
   build-lib
-    [builder-victory-component] builder run clean-lib && babel src -d lib --copy-files
+    [builder-victory-component] builder run clean-lib && builder run --env '{"BABEL_ENV":"commonjs"}' build-babel -- -d lib
+
+  build-libs
+    [builder-victory-component] builder concurrent --queue=1 build-lib build-es
 
   build-watch
-    [builder-victory-component] babel src -d lib --copy-files -w
+    [builder-victory-component] builder concurrent build-lib build-es -- -w
 
   check
     [builder-victory-component] builder run lint && builder run npm:test
@@ -199,10 +216,13 @@ Tasks:
     [builder-victory-component] builder run lint-perf && builder run test-perf
 
   clean
-    [builder-victory-component] builder run clean-lib && builder run clean-dist
+    [builder-victory-component] builder concurrent clean-lib clean-dist clean-es
 
   clean-dist
     [builder-victory-component] rimraf dist
+
+  clean-es
+    [builder-victory-component] rimraf es
 
   clean-lib
     [builder-victory-component] rimraf lib
@@ -217,16 +237,16 @@ Tasks:
     [builder-victory-component] builder concurrent lint-source lint-demo lint-test
 
   lint-demo
-    [builder-victory-component] eslint --color --ext .js,.jsx demo
+    [builder-victory-component] eslint --color demo
 
   lint-perf
-    [builder-victory-component] eslint --color --ext .js,.jsx perf
+    [builder-victory-component] eslint --color perf
 
   lint-source
-    [builder-victory-component] eslint --color --ext .js,.jsx src
+    [builder-victory-component] eslint --color src
 
   lint-test
-    [builder-victory-component] eslint --color --ext .js,.jsx test
+    [builder-victory-component] eslint --color test
 
   open-demo
     [builder-victory-component] opener http://127.0.0.1:3000
@@ -237,35 +257,14 @@ Tasks:
   open-hot
     [builder-victory-component] builder concurrent hot open-demo
 
-  postinstall
-    [ROOT] cd lib || builder run npm:postinstall
-
-  postpublish
-    [ROOT] builder run npm:postpublish
-
-  postversion
-    [ROOT] builder run npm:postversion
-
-  preversion
-    [ROOT] builder run npm:preversion
-
   server-dev
-    [builder-victory-component] webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/demo/webpack.config.dev.js --colors --content-base demo
+    [builder-victory-component] webpack-dev-server --config node_modules/builder-victory-component/config/webpack/demo/webpack.config.dev.js --colors --content-base demo
 
   server-hot
-    [builder-victory-component] webpack-dev-server --port 3000 --config node_modules/builder-victory-component/config/webpack/demo/webpack.config.hot.js --colors --inline --hot --content-base demo
+    [builder-victory-component] webpack-dev-server --config node_modules/builder-victory-component/config/webpack/demo/webpack.config.hot.js --colors --inline --hot --content-base demo
 
   server-test
-    [builder-victory-component] webpack-dev-server --port 3001 --config node_modules/builder-victory-component/config/webpack/webpack.config.test.js --colors
-
-  start
-    [ROOT] builder run hot
-
-  storybook
-    [ROOT] start-storybook -p 3001
-
-  test
-    [ROOT] builder run check
+    [builder-victory-component] webpack-dev-server --config node_modules/builder-victory-component/config/webpack/webpack.config.test.js --colors
 
   test-ci
     [builder-victory-component] builder run test-frontend-ci
@@ -293,9 +292,6 @@ Tasks:
 
   test-perf
     [builder-victory-component] builder run test-frontend-perf
-
-  version
-    [ROOT] builder run npm:version
 
   version-dry-run
     [builder-victory-component] publishr dry-run -V

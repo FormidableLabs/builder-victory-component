@@ -8,10 +8,6 @@
 var path = require("path");
 var webpackCovCfg = require("../webpack/webpack.config.coverage");
 
-// Remove `""` extensions because of webpack bug.
-// https://github.com/FormidableLabs/builder-victory-component/issues/91
-webpackCovCfg.resolve.extensions = webpackCovCfg.resolve.extensions.filter(Boolean);
-
 // Replace with `__dirname` if using in project root.
 var ROOT = process.cwd();
 
