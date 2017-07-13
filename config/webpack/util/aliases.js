@@ -28,7 +28,7 @@ var VICTORY_PKGS = [
     }
   })
   // Remove unresolvable aliases
-  .filter(Boolean)
+  .filter(Boolean);
 
 var toObject = function (extraPath) {
   return VICTORY_PKGS.reduce(function (memo, obj) {
