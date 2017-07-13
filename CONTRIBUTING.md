@@ -49,7 +49,7 @@ $ vim HISTORY.md              # Version notes
 $ vim package.json            # Bump version
 $ builder-support gen-dev     # Create `../builder-victory-component-dev/` files
 $ npm run builder:check       # Last check!
-$ git add package.json dev HISTORY.md
+$ git add package.json HISTORY.md
 $ git commit -m "Version NUMBER"
 $ git tag -a "vNUMBER" -m "Version NUMBER"
 $ git push && git push --tags

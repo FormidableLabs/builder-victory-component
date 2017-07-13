@@ -1,6 +1,9 @@
 History
 =======
 
+## 5.0.0
+* Output ES `es/` sources directory. Upgrade to webpack3.
+
 ## 4.0.4
 * Add exceptions for eslint no-magic-numbers for common angles (90, 180, 270, 360)
 
