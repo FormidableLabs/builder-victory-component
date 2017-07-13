@@ -3,20 +3,18 @@
 var path = require("path");
 var webpack = require("webpack");
 var LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
-var ALIASES = require("./util/aliases");
+var aliases = require("./util/aliases");
 
-// Replace with `__dirname` if using in project root.
-var ROOT = process.cwd();
-var SRC = path.join(ROOT, "src");
-var TEST = path.join(ROOT, "test");
-var PERF = path.join(ROOT, "perf");
+var SRC = path.resolve("src");
+var TEST = path.resolve("test");
+var PERF = path.resolve("perf");
 
 // **Little Hacky**: Infer the filename and library name from the package name.
 //
 // Assumptions:
 // - `package.json`'s `name` field is name of dist files.
 // - PascalCased version of that name is exported class name.
-var PKG = require(path.join(ROOT, "package.json"));
+var PKG = require(path.resolve("package.json"));
 var libPath = (PKG.name || "").toLowerCase();
 if (!libPath) { throw new Error("Need package.json:name field"); }
 // PascalCase (with first character capitalized).
@@ -30,7 +28,7 @@ var libName = libPath
 module.exports = {
   cache: true,
   context: SRC,
-  entry: "./index.js",
+  entry: "./index",
   externals: [
     {
       "react": {
@@ -50,19 +48,19 @@ module.exports = {
     }
   ],
   output: {
-    path: path.join(ROOT, "dist"),
+    path: path.resolve("dist"),
     filename: libPath + ".min.js",
     library: libName,
     libraryTarget: "umd"
   },
   resolve: {
-    extensions: ["", ".js", ".jsx"],
-    alias: ALIASES
+    alias: aliases.pkgs
   },
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        // Transform source
+        test: /\.js$/,
         // Use include specifically of our sources.
         // Do _not_ use an `exclude` here.
         include: [SRC, TEST, PERF],
@@ -81,8 +79,8 @@ module.exports = {
       "placeholders": true,
       "shorthands": true
     }),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
       compress: {
         warnings: false
       }
@@ -92,6 +90,8 @@ module.exports = {
       // is in condtionals like: `if (process.env.NODE_ENV === "production")`
       "process.env.NODE_ENV": JSON.stringify("production")
     }),
-    new webpack.SourceMapDevToolPlugin({ filename: "[file].map" })
+    new webpack.SourceMapDevToolPlugin({
+      filename: "[file].map"
+    })
   ]
 };

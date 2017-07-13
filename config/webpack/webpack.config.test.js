@@ -21,9 +21,6 @@ module.exports = {
     publicPath: "/assets/"
   },
   resolve: _.merge({}, prodCfg.resolve, {
-    // enzyme webpack issue https://github.com/airbnb/enzyme/issues/47
-    // Necessary for `cheerio` to load
-    extensions: prodCfg.resolve.extensions.concat([".json"]),
     alias: {
       // enzyme webpack issue https://github.com/airbnb/enzyme/issues/47
       sinon: "node_modules/sinon/pkg/sinon.js",

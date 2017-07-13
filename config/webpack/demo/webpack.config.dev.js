@@ -3,11 +3,10 @@
 var path = require("path");
 var LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
-var ALIASES = require("../util/aliases");
+var aliases = require("../util/aliases");
 
-var ROOT = process.cwd();
-var SRC = path.join(ROOT, "src");
-var DEMO = path.join(ROOT, "demo");
+var SRC = path.resolve("src");
+var DEMO = path.resolve("demo");
 var WDS_PORT = 3000;
 
 module.exports = {
@@ -20,6 +19,7 @@ module.exports = {
 
   output: {
     path: "./demo",
+    pathinfo: true,
     filename: "main.js",
     publicPath: "/assets/"
   },
@@ -34,13 +34,13 @@ module.exports = {
     reasons: true
   },
   resolve: {
-    extensions: ["", ".js", ".jsx"],
-    alias: ALIASES
+    alias: aliases.pkgs
   },
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        // Transform source
+        test: /\.js$/,
         // Use include specifically of our sources.
         // Do _not_ use an `exclude` here.
         include: [SRC, DEMO],
