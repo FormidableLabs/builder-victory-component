@@ -3,7 +3,7 @@
 Builder Archetype: Victory Component
 ==================================
 
-A Victory component archetype for [builder][].
+A [Victory][] component archetype for [builder][].
 
 ## Installation
 
@@ -298,6 +298,7 @@ Tasks:
 ```
 
 [builder]: https://github.com/FormidableLabs/builder
+[Victory]: https://github.com/FormidableLabs/victory
 [formidable-react-component-boilerplate]: https://github.com/FormidableLabs/formidable-react-component-boilerplate
 [trav_img]: https://api.travis-ci.org/FormidableLabs/builder-victory-component.svg
 [trav_site]: https://travis-ci.org/FormidableLabs/builder-victory-component
