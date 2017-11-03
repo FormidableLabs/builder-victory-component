@@ -19,8 +19,11 @@ module.exports = function (config) {
     files: [
       // Sinon has issues with webpack. Do global include.
       archDevRequire.resolve("sinon/pkg/sinon"),
+
+      // Polyfills for PhantomJS in React 16.
       archDevRequire.resolve('core-js/es6/map'),
       archDevRequire.resolve('core-js/es6/set'),
+
       // Test bundle (must be created via `npm run dev|hot|server-test`)
       "http://127.0.0.1:3001/assets/main.js"
     ],
