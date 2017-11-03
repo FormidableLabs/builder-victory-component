@@ -1,6 +1,9 @@
 History
 =======
 
+## 5.1.0
+* Add `Set` and `Map` polyfills to support React 16
+
 ## 5.0.1
 * Fix and upgrade instabul instrumentation for test coverage.
 
