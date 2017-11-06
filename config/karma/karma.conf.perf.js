@@ -2,10 +2,15 @@
 
 var path = require("path");
 var webpackPerfCfg = require("../webpack/webpack.config.perf");
+var archDevRequire = require("builder-victory-component-dev/require");
 
 var MAIN_PATH = path.join(process.cwd(), "perf/client/main.js");
+var POLYFILL_PATH = path.join(
+  path.dirname(archDevRequire.resolve("core-js/package.json")), "es6/**/*.js"
+);
 var PREPROCESSORS = {};
 PREPROCESSORS[MAIN_PATH] = ["webpack"];
+PREPROCESSORS[POLYFILL_PATH] = ["webpack"];
 
 /*
  * Karma Configuration: "perf" version.
