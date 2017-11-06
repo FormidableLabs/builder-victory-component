@@ -1,6 +1,9 @@
 History
 =======
 
+## 5.1.1
+* Preprocess polyfills
+
 ## 5.1.0
 * Add `Set` and `Map` polyfills to support React 16
 
