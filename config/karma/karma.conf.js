@@ -13,7 +13,7 @@ var archDevRequire = require("builder-victory-component-dev/require");
 
 var MAIN_PATH = path.join(process.cwd(), "test/client/main.js");
 var POLYFILL_PATH = path.join(
-  path.dirname(archDevRequire.resolve("core-js/package.json")),"es6/**/*.js"
+  path.dirname(archDevRequire.resolve("core-js/package.json")), "es6/**/*.js"
 );
 var PREPROCESSORS = {};
 PREPROCESSORS[MAIN_PATH] = ["webpack"];
