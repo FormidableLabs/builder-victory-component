@@ -9,9 +9,15 @@
 var path = require("path");
 var webpackCfg = require("../webpack/webpack.config.test");
 
+var archDevRequire = require("builder-victory-component-dev/require");
+
 var MAIN_PATH = path.join(process.cwd(), "test/client/main.js");
+var POLYFILL_PATH = path.join(
+  path.dirname(archDevRequire.resolve("core-js/package.json")), "es6/**/*.js"
+);
 var PREPROCESSORS = {};
 PREPROCESSORS[MAIN_PATH] = ["webpack"];
+PREPROCESSORS[POLYFILL_PATH] = ["webpack"];
 
 module.exports = function (config) {
   /* eslint-disable global-require */
@@ -25,7 +31,11 @@ module.exports = function (config) {
     preprocessors: PREPROCESSORS,
     files: [
       // Sinon has issues with webpack. Do global include.
-      require("builder-victory-component-dev/require").resolve("sinon/pkg/sinon"),
+      archDevRequire.resolve("sinon/pkg/sinon"),
+
+      // Polyfills for PhantomJS in React 16.
+      archDevRequire.resolve("core-js/es6/map"),
+      archDevRequire.resolve("core-js/es6/set"),
 
       // Test bundle (created via local webpack-dev-server in this config).
       MAIN_PATH
