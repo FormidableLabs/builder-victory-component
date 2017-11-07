@@ -1,6 +1,9 @@
 History
 =======
 
+## 5.1.2
+* Preprocess polyfills for all test configs
+
 ## 5.1.1
 * Preprocess polyfills
 
