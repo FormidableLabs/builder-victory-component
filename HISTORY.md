@@ -1,6 +1,10 @@
 History
 =======
 
+## 5.2.0
+* babel config for ES module importing
+* use builder concurrent --buffer
+
 ## 5.1.2
 * Preprocess polyfills for all test configs
 
