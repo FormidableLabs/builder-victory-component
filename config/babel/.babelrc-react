@@ -21,6 +21,11 @@
         ["transform-es2015-modules-commonjs", {
           "strict": false,
           "allowTopLevelThis": true
+        }],
+        ["module-resolver", {
+          "alias": {
+            "^victory-(.+)/es/(.+)": "^victory-\\1/lib/\\2"
+          }
         }]
       ]
     }
